@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,target-densitydpi=device-dpi">
+	<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<link rel="stylesheet" href="css/css1.css">
+	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script>
+	$(document).ready(function(){
+	$('#footnavbar li a').click(function () {
+			 // $('#footnavbar a').style.setProperty('color','#c11e21','important');
+			 // $("a").each(function(index){//便利对象
+    //             $(this).click(function(){//点击触发事件
+    //                 $("a").removeClass("active");//删除当前元素的样式
+    //                 $("a").eq(index).addClass("active");//添加当前元素的样式
+    //             });
+    //         });
+		$(this).addClass('active');
+        $('#footnavbar li a').not(this).removeClass('active');
+		})
+	}); 
+
+
+	$(window).bind('resize load', function(){
+	$("body").css("zoom", $(window).width() / 414);
+	$("body").css("display" , "block");
+	});         
+</script>
+</head>
+<body>
+
+<div data-role="page" id="index">
+	<div id="header" data-role="header" data-position="fixed" id="head">
+		<div id="title">
+			<h2>党建</h2>
+		</div>
+		<div data-role="navbar" id="headnavbar">
+			<ul>
+				<li><a href="search.html" target="myIframe">文档查询</a></li>
+				<li><a href="docstatistics.html" target="myIframe">文档统计</a></li>
+			</ul>
+		</div>
+	</div>
+	<div data-role="main" class="ui-content" id="maincontent">
+		<section id="mainbody">
+			<iframe name="myIframe"  style="width: 100%;"  id="myIframe" src="search.html" frameborder="0"></iframe>
+		</section>
+	</div>
+	<div data-role="footer" data-position="fixed" data-id="footnavbar">
+		<div data-role="navbar" id="footnavbar">
+			<ul>
+				<li><a id="1" class="active" href="#" data-icon="document">党建文档</a></li>
+				<li><a id="2" href="#indexMeeting" data-icon="meeting">会议培训</a></li>
+				 
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div data-role="page" id="indexMeeting">
+	<div data-role="header" data-position="fixed">
+		<div id="title">
+			<h2>党建</h2>
+		</div>
+		<div data-role="navbar" id="headnavbar">
+			<ul>
+				<li><a href="">会议查询</a></li>
+				<li><a href="">会议统计</a></li>
+			</ul>
+		</div>
+	</div>
+	<div data-role="main" class="ui-content">
+		
+	</div>
+	<div data-role="footer" data-position="fixed" data-id="footnavbar">
+		<div data-role="navbar" id="footnavbar">
+			<ul>
+				<li><a href="#index" data-icon="document">党建文档</a></li>
+				<li><a href="#" data-icon="meeting">会议培训</a></li>
+				<li><a href="#indexUser" data-icon="user">账户维护</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div data-role="page" id="indexUser">
+	<div data-role="header" data-position="fixed">
+		<div id="title">
+			<h2>党建</h2>
+		</div>
+	</div>
+	<div data-role="main" class="ui-content">
+		
+	</div>
+	<div data-role="footer" data-position="fixed" data-id="footnavbar">
+		<div data-role="navbar" id="footnavbar">
+			<ul>
+				<li><a href="#index" data-icon="document">党建文档</a></li>
+				<li><a href="#indexMeeting" data-icon="meeting">会议培训</a></li>
+				<li><a href="#" data-icon="user">账户维护</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+
+</body>
+</html>

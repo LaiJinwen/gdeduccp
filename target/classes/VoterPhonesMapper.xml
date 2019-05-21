@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.gd.ccp.dao.VoterPhonesMapper" >
+  <resultMap id="BaseResultMap" type="edu.gd.ccp.entity.VoterPhones" >
+    <id column="Id" property="id" jdbcType="INTEGER" />
+    <result column="voteTaskId" property="votetaskid" jdbcType="INTEGER" />
+    <result column="phones" property="phones" jdbcType="VARCHAR" />
+    <result column="ips" property="ips" jdbcType="VARCHAR" />
+    <result column="organizationNos" property="organizationnos" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Id, voteTaskId, phones, ips, organizationNos
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from voterphones
+    where Id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from voterphones
+    where Id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="edu.gd.ccp.entity.VoterPhones" >
+    insert into voterphones (Id, voteTaskId, phones, 
+      ips, organizationNos)
+    values (#{id,jdbcType=INTEGER}, #{votetaskid,jdbcType=INTEGER}, #{phones,jdbcType=VARCHAR}, 
+      #{ips,jdbcType=VARCHAR}, #{organizationnos,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="edu.gd.ccp.entity.VoterPhones" >
+    insert into voterphones
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="votetaskid != null" >
+        voteTaskId,
+      </if>
+      <if test="phones != null" >
+        phones,
+      </if>
+      <if test="ips != null" >
+        ips,
+      </if>
+      <if test="organizationnos != null" >
+        organizationNos,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="votetaskid != null" >
+        #{votetaskid,jdbcType=INTEGER},
+      </if>
+      <if test="phones != null" >
+        #{phones,jdbcType=VARCHAR},
+      </if>
+      <if test="ips != null" >
+        #{ips,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationnos != null" >
+        #{organizationnos,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="edu.gd.ccp.entity.VoterPhones" >
+    update voterphones
+    <set >
+      <if test="votetaskid != null" >
+        voteTaskId = #{votetaskid,jdbcType=INTEGER},
+      </if>
+      <if test="phones != null" >
+        phones = #{phones,jdbcType=VARCHAR},
+      </if>
+      <if test="ips != null" >
+        ips = #{ips,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationnos != null" >
+        organizationNos = #{organizationnos,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="edu.gd.ccp.entity.VoterPhones" >
+    update voterphones
+    set voteTaskId = #{votetaskid,jdbcType=INTEGER},
+      phones = #{phones,jdbcType=VARCHAR},
+      ips = #{ips,jdbcType=VARCHAR},
+      organizationNos = #{organizationnos,jdbcType=VARCHAR}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

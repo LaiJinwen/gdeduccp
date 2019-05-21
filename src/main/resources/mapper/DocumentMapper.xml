@@ -1,0 +1,736 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.gd.ccp.dao.DocumentMapper" >
+  <resultMap id="BaseResultMap" type="edu.gd.ccp.entity.Document" >
+    <id column="documentId" property="documentid" jdbcType="INTEGER" />
+    <result column="documentTaskId" property="documenttaskid" jdbcType="INTEGER" />
+    <result column="documentTypeId" property="documenttypeid" jdbcType="INTEGER" />
+    <result column="documentNo" property="documentno" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="submitDate" property="submitdate" jdbcType="TIMESTAMP" />
+    <result column="organizationId" property="organizationid" jdbcType="INTEGER" />
+    <result column="organizationNo" property="organizationno" jdbcType="VARCHAR" />
+    <result column="submitUserId" property="submituserid" jdbcType="VARCHAR" />
+    <result column="documentState" property="documentstate" jdbcType="CHAR" />
+    <result column="remind" property="remind" jdbcType="INTEGER" />
+    <result column="approvalResult" property="approvalresult" jdbcType="VARCHAR" />
+    <result column="suggest" property="suggest" jdbcType="VARCHAR" />
+    <result column="approverUserId" property="approveruserid" jdbcType="VARCHAR" />
+    <result column="approvalDate" property="approvaldate" jdbcType="TIMESTAMP" />
+    <result column="accessory" property="accessory" jdbcType="VARCHAR" />
+    <result column="templateAccessory" property="templateaccessory" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    documentId, documentTaskId, documentTypeId, documentNo, title, submitDate, organizationId, 
+    organizationNo, submitUserId, documentState, remind, approvalResult, suggest, approverUserId, 
+    approvalDate, accessory, templateAccessory
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from document
+    where documentId = #{documentid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from document
+    where documentId = #{documentid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="edu.gd.ccp.entity.Document" >
+    insert into document (documentId, documentTaskId, documentTypeId, 
+      documentNo, title, submitDate, 
+      organizationId, organizationNo, submitUserId, 
+      documentState, remind, approvalResult, 
+      suggest, approverUserId, approvalDate, 
+      accessory, templateAccessory)
+    values (#{documentid,jdbcType=INTEGER}, #{documenttaskid,jdbcType=INTEGER}, #{documenttypeid,jdbcType=INTEGER}, 
+      #{documentno,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{submitdate,jdbcType=TIMESTAMP}, 
+      #{organizationid,jdbcType=INTEGER}, #{organizationno,jdbcType=VARCHAR}, #{submituserid,jdbcType=VARCHAR}, 
+      #{documentstate,jdbcType=CHAR}, #{remind,jdbcType=INTEGER}, #{approvalresult,jdbcType=VARCHAR}, 
+      #{suggest,jdbcType=VARCHAR}, #{approveruserid,jdbcType=VARCHAR}, #{approvaldate,jdbcType=TIMESTAMP}, 
+      #{accessory,jdbcType=VARCHAR}, #{templateaccessory,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="edu.gd.ccp.entity.Document" >
+    insert into document
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="documentid != null" >
+        documentId,
+      </if>
+      <if test="documenttaskid != null" >
+        documentTaskId,
+      </if>
+      <if test="documenttypeid != null" >
+        documentTypeId,
+      </if>
+      <if test="documentno != null" >
+        documentNo,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="submitdate != null" >
+        submitDate,
+      </if>
+      <if test="organizationid != null" >
+        organizationId,
+      </if>
+      <if test="organizationno != null" >
+        organizationNo,
+      </if>
+      <if test="submituserid != null" >
+        submitUserId,
+      </if>
+      <if test="documentstate != null" >
+        documentState,
+      </if>
+      <if test="remind != null" >
+        remind,
+      </if>
+      <if test="approvalresult != null" >
+        approvalResult,
+      </if>
+      <if test="suggest != null" >
+        suggest,
+      </if>
+      <if test="approveruserid != null" >
+        approverUserId,
+      </if>
+      <if test="approvaldate != null" >
+        approvalDate,
+      </if>
+      <if test="accessory != null" >
+        accessory,
+      </if>
+      <if test="templateaccessory != null" >
+        templateAccessory,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="documentid != null" >
+        #{documentid,jdbcType=INTEGER},
+      </if>
+      <if test="documenttaskid != null" >
+        #{documenttaskid,jdbcType=INTEGER},
+      </if>
+      <if test="documenttypeid != null" >
+        #{documenttypeid,jdbcType=INTEGER},
+      </if>
+      <if test="documentno != null" >
+        #{documentno,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="submitdate != null" >
+        #{submitdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="organizationid != null" >
+        #{organizationid,jdbcType=INTEGER},
+      </if>
+      <if test="organizationno != null" >
+        #{organizationno,jdbcType=VARCHAR},
+      </if>
+      <if test="submituserid != null" >
+        #{submituserid,jdbcType=VARCHAR},
+      </if>
+      <if test="documentstate != null" >
+        #{documentstate,jdbcType=CHAR},
+      </if>
+      <if test="remind != null" >
+        #{remind,jdbcType=INTEGER},
+      </if>
+      <if test="approvalresult != null" >
+        #{approvalresult,jdbcType=VARCHAR},
+      </if>
+      <if test="suggest != null" >
+        #{suggest,jdbcType=VARCHAR},
+      </if>
+      <if test="approveruserid != null" >
+        #{approveruserid,jdbcType=VARCHAR},
+      </if>
+      <if test="approvaldate != null" >
+        #{approvaldate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="accessory != null" >
+        #{accessory,jdbcType=VARCHAR},
+      </if>
+      <if test="templateaccessory != null" >
+        #{templateaccessory,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="edu.gd.ccp.entity.Document" >
+    update document
+    <set >
+      <if test="documenttaskid != null" >
+        documentTaskId = #{documenttaskid,jdbcType=INTEGER},
+      </if>
+      <if test="documenttypeid != null" >
+        documentTypeId = #{documenttypeid,jdbcType=INTEGER},
+      </if>
+      <if test="documentno != null" >
+        documentNo = #{documentno,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="submitdate != null" >
+        submitDate = #{submitdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="organizationid != null" >
+        organizationId = #{organizationid,jdbcType=INTEGER},
+      </if>
+      <if test="organizationno != null" >
+        organizationNo = #{organizationno,jdbcType=VARCHAR},
+      </if>
+      <if test="submituserid != null" >
+        submitUserId = #{submituserid,jdbcType=VARCHAR},
+      </if>
+      <if test="documentstate != null" >
+        documentState = #{documentstate,jdbcType=CHAR},
+      </if>
+      <if test="remind != null" >
+        remind = #{remind,jdbcType=INTEGER},
+      </if>
+      <if test="approvalresult != null" >
+        approvalResult = #{approvalresult,jdbcType=VARCHAR},
+      </if>
+      <if test="suggest != null" >
+        suggest = #{suggest,jdbcType=VARCHAR},
+      </if>
+      <if test="approveruserid != null" >
+        approverUserId = #{approveruserid,jdbcType=VARCHAR},
+      </if>
+      <if test="approvaldate != null" >
+        approvalDate = #{approvaldate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="accessory != null" >
+        accessory = #{accessory,jdbcType=VARCHAR},
+      </if>
+      <if test="templateaccessory != null" >
+        templateAccessory = #{templateaccessory,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where documentId = #{documentid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="edu.gd.ccp.entity.Document" >
+    update document
+    set documentTaskId = #{documenttaskid,jdbcType=INTEGER},
+      documentTypeId = #{documenttypeid,jdbcType=INTEGER},
+      documentNo = #{documentno,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      submitDate = #{submitdate,jdbcType=TIMESTAMP},
+      organizationId = #{organizationid,jdbcType=INTEGER},
+      organizationNo = #{organizationno,jdbcType=VARCHAR},
+      submitUserId = #{submituserid,jdbcType=VARCHAR},
+      documentState = #{documentstate,jdbcType=CHAR},
+      remind = #{remind,jdbcType=INTEGER},
+      approvalResult = #{approvalresult,jdbcType=VARCHAR},
+      suggest = #{suggest,jdbcType=VARCHAR},
+      approverUserId = #{approveruserid,jdbcType=VARCHAR},
+      approvalDate = #{approvaldate,jdbcType=TIMESTAMP},
+      accessory = #{accessory,jdbcType=VARCHAR},
+      templateAccessory = #{templateaccessory,jdbcType=VARCHAR}
+    where documentId = #{documentid,jdbcType=INTEGER}
+  </update>
+  
+  
+	<select id="getDocumentsByOrganizationId" resultType="Document">
+		select
+        d.documentid,d.documentno,d.title,d.submitdate,d.documentstate,d.accessory
+		from document d 
+		where 1=1
+        <if test="organizationId != null">
+			and d.organizationid= #{organizationId}
+		</if>
+		<if test="offset!=null and limit!=null">
+			LIMIT #{offset}, #{limit}
+		</if>
+		order by d.documentid desc
+	</select>
+
+	<select id="getDocumentWithTaskByOrganizationId" resultType="map">
+		select
+		document.documentTaskId,
+		documenttask.title,documenttask.documentNo
+		from document INNER JOIN
+		documenttask ON document.documentTaskId=documenttask.documentTaskId
+		where document.organizationid = #{organizationId}
+		<if test="offset!=null and limit!=null">
+			LIMIT #{offset}, #{limit}
+		</if>
+		 
+	</select>
+	<!-- 按条件获取文档 -->
+	<select id="getDocumentsByCondation" resultType="map">
+		select
+		d.documentId,d.documentNo,d.remind,d.title,d.submitDate,d.documentState,o.organizationName,o.schoolLevel,o.belong,o.organizationType,
+		d.accessory
+		from document d
+		LEFT JOIN organization o on
+		d.organizationId=o.organizationId
+		where 1=1
+        <if test="documentNo != null">
+            and INSTR(d.documentNo,#{documentNo})
+		</if>
+		<if test="title != null">
+			and INSTR(d.title,#{title})
+		</if>
+		<if test="organizationName != null">
+	        and INSTR(o.organizationName,#{organizationName})		
+		</if>
+		<if test="organizationType != null">
+			 and INSTR(#{organizationType},o.organizationType)	
+		</if>
+		<if test="belong != null">
+			and INSTR(#{belong},o.belong)
+		</if>
+		<if test="schoolLevel != null">
+		    and INSTR(#{schoolLevel},o.schoolLevel)
+		</if>				
+		<if test="documentState != null">
+			and d.documentState= #{documentState}
+		</if>		
+		order by o.organizationId
+		<if test="offset!=null and limit!=null">
+			LIMIT #{offset}, #{limit}
+		</if>
+		
+	</select>
+
+	<!-- 根据分页数据offset 和limit查询数据 -->
+	<select id="findDocumentsByCondation" parameterType="Map"
+		resultType="map">
+		select
+		d.documentNo,d.title,d.submitDate,d.remind,dt.documentType,o.organizationName,o.organizationType,
+		d.accessory
+		from document d
+		INNER JOIN documenttype dt on
+		d.documentTypeId=dt.documentTypeId
+		INNER JOIN organization o on
+		d.organizationId=o.organizationId
+		where 1=1
+		<if test="documentNo != null">
+			and d.documentNo= #{documentNo}
+		</if>
+		<if test="title != null">
+			and d.title= #{title}
+		</if>
+ 
+		<if test="organizationName != null">
+			and o.organizationName= #{organizationName}
+		</if>
+		<if test="organizationType != null">
+			and o.organizationType= #{organizationType}
+		</if>
+		<if test="documentState != null">
+			and d.documentState= #{documentState}
+		</if>		
+		<if test="offset!=null and limit!=null">
+			LIMIT #{offset}, #{limit}
+		</if>
+	</select>
+	<!-- 统计条件下文档总数 -->
+	<select id="getDocumentCountByCondation" resultType="java.lang.Integer">
+		select
+		count(1) as count
+		from document d
+		LEFT JOIN organization o on
+		d.organizationId=o.organizationId
+		where 1=1
+           <if test="documentNo != null">
+            and INSTR(d.documentNo,#{documentNo})
+		</if>
+		<if test="title != null">
+			and INSTR(d.title,#{title})
+		</if>
+	 
+		<if test="organizationName != null">
+	        and INSTR(o.organizationName,#{organizationName})		
+		</if>
+		<if test="organizationType != null">
+			 and INSTR(#{organizationType},o.organizationType)	
+		</if>
+		<if test="belong != null">
+			and INSTR(#{belong},o.belong)
+		</if>
+		<if test="schoolLevel != null">
+		    and INSTR(#{schoolLevel},o.schoolLevel)
+		</if>				
+		<if test="documentState != null">
+			and d.documentState= #{documentState}
+		</if>				
+	</select>
+	<!-- 按学校类别统计文档的整体提交情况 -->
+	<select id="getSchoolTypeDocumentCountByNo" resultType="map">
+		select CONCAT(o.organizationType,o.schoolLevel) as orgtype,
+       count(case when d.documentState !='未提交' THEN 1 ELSE NULL END) as count1,
+       count(case when d.documentState ='未提交' THEN 1 ELSE NULL END) as count2		
+		from document d INNER JOIN organization o on
+		d.organizationId=o.organizationId
+		where 1=1
+		<if test="documentNo != null">
+			and d.documentNo= #{documentNo}
+		</if>
+		group by o.organizationType,o.schoolLevel
+	</select>
+	<!-- 统计文档的整体提交情况 -->
+	<select id="getDocumentCountByNo" resultType="java.lang.Integer">
+		select count(1) as count
+		from document
+		where 1=1
+		<if test="d.documentState != null">
+			and d.documentState= #{documentState}
+		</if>
+		<if test="d.documentNo != null">
+			and d.documentNo= #{documentNo}
+		</if>
+	</select>
+	<!-- 统计各个学校的提交情况 -->
+	<select id="getSchoolDocumentCountByNo" resultType="map">
+		select o.organizationName,d.title, d.documentNo,d.documentState,o.supervisorDepartment, 
+	  d.organizationId,o.organizationName,o.organizationNo,o.organizationType,o.schoolLevel,o.belong,
+       count(case when d.documentState !='未提交' THEN 1 ELSE NULL END) as count1,
+       count(case when d.documentState ='未提交' THEN 1 ELSE NULL END) as count2,
+       sum(d.remind) as remindtimes
+		from document d LEFT JOIN organization o on
+		d.organizationId=o.organizationId
+		where 1=1
+        <if test="documentNo != null">
+            and INSTR(d.documentNo,#{documentNo})
+		</if>
+		<if test="title != null">
+			and INSTR(d.title,#{title})
+		</if>
+		<if test="organizationName != null">
+	        and INSTR(o.organizationName,#{organizationName})		
+		</if>
+		<if test="organizationType != null">
+			 and INSTR(#{organizationType},o.organizationType)	
+		</if>
+		<if test="belong != null">
+			and INSTR(#{belong},o.belong)
+		</if>
+		<if test="schoolLevel != null">
+		    and INSTR(#{schoolLevel},o.schoolLevel)
+		</if>				
+		group by o.organizationNo
+		order by o.organizationNo
+	</select>
+	<!-- 统计某学校的提交情况 -->
+	<select id="getDocumentCountBySchool" resultType="map">
+		select o.organizationName, d.title, d.documentNo,d.documentState
+		from document d INNER JOIN organization o on
+		d.organizationId=o.organizationId
+		where 1=1
+		<if test="d.organizationName != null">
+			and d.organizationName= #{organizationName}
+		</if>
+		order by d.documentState
+	</select>
+	<!-- 统计某文档的提交情况 -->
+	<select id="getDocumentByNo" resultType="map">
+          select o.organizationName, d.title, d.documentNo, d.documentState  
+          from document d INNER JOIN organization o on d.organizationId=o.organizationId 
+	  	  where 1=1
+ 		<if test="d.documentNo != null">
+			and d.documentNo= #{documentNo}
+		</if>
+           group by d.organizationId 
+           order by d.documentState
+	</select>	
+<!-- 按id获取文档文档详细情况 -->
+	<select id="getDocumentDetailById" resultType="map">
+		select
+		d.documentId,d.documentNo,d.title,d.submitDate,d.documentState,dt.documentType,o.organizationName,o.organizationType,
+		d.accessory,d.templateAccessory,d.suggest
+		from document d
+		INNER JOIN documenttype dt on
+		d.documentTypeId=dt.documentTypeId
+		INNER JOIN organization o on
+		d.organizationId=o.organizationId
+		where 1=1
+        <if test="documentId != null">
+			and d.documentId= #{documentId}
+		</if>
+	
+	</select>	
+	
+	
+	<insert id="insertNewDocument">
+			INSERT INTO document(
+				documentTaskId, documentTypeId, documentNo , title,
+				submitDate, organizationId, submitUserId, documentState,
+				approvalResult, suggest, approverUserId, 
+				approvalDate, accessory , templateAccessory
+			)
+			VALUES (
+				#{documenttaskid}, #{documenttypeid}, #{documentno}, #{title}, 
+				#{submitdate}, #{organizationid}, #{submituserid}, 
+				#{documentstate}, #{approvalresult}, #{suggest}, #{approveruserid}, 
+				#{approvaldate}, #{accessory}, #{templateaccessory}
+			)
+		</insert>
+		
+			 <!-- 任务编号   文档列表 -->
+		<select id="getDocumentsByTaskId"  resultType="Document">
+			SELECT 
+				documentId as documentid , documentTypeId as documenttypeid, documentNo documentno,
+				title, submitDate as submitdate , organizationId as organizationid, submitUserId,
+				approvalResult, accessory, templateaccessory
+			FROM
+				document
+			WHERE documentTaskId = #{taskId}
+		</select>
+		
+		 <!-- 指定类别   文档列表 -->
+		<select id="getDocumentsByType"  resultType="Document">
+			SELECT 
+				documentId as documentid , documentTypeId as documenttypeid, documentNo documentno,
+				title, submitDate as submitdate , organizationId as organizationid, submitUserId,
+				approvalResult, accessory, templateaccessory
+			FROM
+				document
+			WHERE documentTypeId = #{typeId}
+		</select>
+		
+		 <!-- 指定标题   文档列表 -->
+		<select id="getDocumentsByTitle"  resultType="Document">
+			SELECT 
+				documentId as documentid , documentTypeId as documenttypeid, documentNo documentno,
+				title, submitDate as submitdate , organizationId as organizationid, submitUserId,
+				approvalResult, accessory, templateaccessory
+			FROM
+				document
+			WHERE title = #{title}
+		</select>
+		
+		
+		<!-- 通过学校名   统计文档数量 -->
+		<select id = "countDocumentsBySchoolName" resultType = "java.lang.Integer">
+			SELECT 
+				count(*)
+			FROM 
+				document d left join organization o
+				on d.organizationId = o.organizationId
+			where o.organizationName = #{organizationName}
+				
+		</select>
+		
+		<!-- 通过学校类别   统计文档数量 -->
+		<select id = "countDocumentsBySchoolType" resultType = "java.lang.Integer">
+			SELECT 
+				count(*)
+			FROM 
+				document d left join organization o
+				on d.organizationId = o.organizationId
+			where o.organizationName = #{organizationType}
+		</select>
+		
+		<!-- 通过文档名  统计文档数量 -->
+		<select id = "countDocumentsByDocumentTitle" resultType = "java.lang.Integer">
+			SELECT 
+				count(*)
+			FROM 
+				document
+			GROUP BY title having title = #{title};
+		</select>
+		
+		<!-- 通过文档类别   统计文档数量 -->
+		<select id = "countDocumentsByDocumentNameType" resultType = "java.lang.Integer">
+			SELECT 
+				count(*)
+			FROM 
+				document d left join documenttype dt
+				on d.documentTypeId = dt.documentTypeId
+			where dt.documentTypeId = #{documentType}
+			
+		</select>
+		
+		<!-- 通过文档编号   统计文档数量 -->
+		<select id = "countDocumentsByDocumentTypeId" resultType = "java.lang.Integer">
+			SELECT 
+				count(*)
+			FROM 
+				document
+			GROUP BY documentTypeId having documentTypeId = #{documentTypeId};
+		</select>
+		
+<!-- 列出该组织所有未上传的文档 -->
+		<!-- 2018/11/21 增加了分页参数 -->
+		<select id="listUnsubmitDocumentsByOrganizationId" resultType = "map">
+			select
+				d.documentId,d.documentTaskId, d.documentTypeId, d.documentNo,
+				d.title, d.templateAccessory,dt.publishDate, dt.deadLine,documenttype.documentType
+			from document d 
+			INNER JOIN documenttask dt ON
+				dt.documentTaskId = d.documentTaskId
+			INNER JOIN documenttype ON d.documentTypeId = documenttype.documentTypeId
+			where d.organizationId =#{organizationId}  AND d.documentState = '未提交'
+			order by documentTaskId DESC
+			<if test="offset!=null and limit!=null">
+					LIMIT #{offset}, #{limit}
+			 </if>
+		</select>
+		
+		
+		<!-- 列出该组织所有文档  -->
+		<!-- 2018/11/21 增加了分页参数 -->
+		<select id="listDocumentsByOrganizationId" resultType = "map">
+			SELECT 
+				d.documentId,d.documentTaskId, d.documentTypeId, d.documentNo,
+				d.title, d.submitDate, d.submitUserId,d.documentState, 
+				d.approvalResult, d.suggest, d.approverUserId, d.approvalDate, d.accessory, d.templateAccessory,
+       		 	dt.documentType,documenttask.publishDate
+			 FROM
+				document d INNER JOIN documenttype dt ON
+				dt.documentTypeId = d.documentTypeId
+        	 INNER JOIN documenttask  ON
+				documenttask.documentTaskId = d.documentTaskId
+			 WHERE organizationId = #{organizationId}
+			 ORDER BY documenttask.publishDate desc
+			 
+     		 <if test="offset!=null and limit!=null">
+					LIMIT #{offset}, #{limit}
+			 </if>
+			 
+		</select>		
+	
+		
+		<!-- 通过文档Id查找文档类别 -->
+		<select id = "getDocumentTypeByDocumentId" resultType = "String">
+			select
+				dt.documentType
+			FROM
+				document d
+			INNER JOIN documenttype dt
+			ON d.documentTypeId = dt.documentTypeId
+			WHERE d.documentId = #{documentId}
+		</select>
+		
+		<!-- 通过文档Id查找文档编号(documentNo) -->
+		<select id = "getDocumentNoByDocumentId" resultType = "String">
+			select
+				documentNo
+			FROM
+				document 
+			WHERE documentId = #{documentId}
+		</select>
+		
+		<!-- 通过文档Id查找文档附件并下载 -->
+
+		<select id = "getAccessoryByDocumentId" resultType = "String">
+			select
+				accessory
+			FROM
+				document 
+			WHERE documentId = #{documentId}
+		</select>
+
+		<!-- 通过文档Id查找文档附件并下载 -->
+		<select id = "getTemplateByDocumentId" resultType = "String">
+			select
+				templateAccessory
+			FROM
+				document 
+			WHERE documentId = #{documentId}
+		</select>
+				
+		<!-- 通过文档Id查找文档评语 -->
+		<select id = "getSuggestByDocumentId" resultType = "String">
+			select
+				suggest
+			FROM
+				document 
+			WHERE documentId = #{documentId}
+		</select>
+				
+		<!-- 用户提交文档，更改文档状态，提交时间，文档名 -->
+		<!-- 通过组织编号进行更新 -->
+		<update id="updateDocumentStateWhenSubmit">
+		update 
+			document
+		set
+			submitUserId = #{0},
+			documentState = #{3},
+			accessory = #{2},
+			submitDate = DATE_FORMAT(NOW(),'%Y-%m-%d %H:%m:%s')
+		where documentId = #{1}
+		</update>
+		
+		<!-- 用户删除文档，更改用户文档状态为未提交 -->
+		<!-- 通过个人编号进行更新 -->
+		<update id="updateDocumentStateWhenDelete">
+		update 
+			document
+		set
+			submitUserId = null,
+			documentState = '未提交',
+			accessory = null,
+			submitDate = null
+		where documentId = #{documentId}
+		</update>
+		
+		<!-- 通过任务Id与用户查找文档 -->
+		<select id = "getDocumentByTaskIdAndOrganizationId" resultType = "Document">
+			select
+				<include refid="Base_Column_List" />
+			FROM
+				document d
+			WHERE 1=1
+              <if test="documentTaskId != null">
+			     and d.documenttaskid= #{documentTaskId}
+		      </if>
+              <if test="organizationId != null">
+			     and d.organizationId= #{organizationId}
+		      </if>			
+		</select>
+		
+		<!-- 列出该组织所有的文档数   -->
+		<!-- 增加于2018/11/21 -->
+		<select id = "UserGetDocumentCount" resultType = "Integer">
+			SELECT 
+				count(*)
+			FROM 
+				document
+			GROUP BY organizationId having organizationId = #{organizationId};
+		</select>
+		
+		<!-- 列出该组织所有未提交的文档数   -->
+		<!-- 增加于2018/11/22 -->
+		<select id = "UserGetUnsubmitDocumentCount" resultType = "Integer">
+			SELECT 
+				count(*)
+			FROM 
+				document d INNER JOIN documenttask  dt on d.documentTaskId=dt.documentTaskId
+			where d.documentState = '未提交'
+			GROUP BY organizationId having organizationId = #{organizationId};
+		</select>
+    <!-- 更新提醒次数,只更改未提交的-->
+	<update id="updateRemindDocumentByTaskid" parameterType="Integer">
+		 update document 
+		 set remind=remind+1
+		 where documentTaskId = #{documentTaskId} and documentState = '未提交'
+	</update>		
+ 
+	<!-- 统计某个学校的提交情况 -->
+	<select id="getDocumentCountBySchoolId" resultType="map">
+		select o.organizationName,d.title, d.documentNo,d.documentState, d.organizationId,
+       count(case when d.documentState !='未提交' THEN 1 ELSE NULL END) as count1,
+       count(case when d.documentState ='未提交' THEN 1 ELSE NULL END) as count2
+		from document d INNER JOIN organization o on
+		d.organizationId=o.organizationId
+		where  o.organizationId= #{organizationId}
+		order by count2 desc
+	</select>	
+		<!-- 获取某次任务的所有用户 -->
+	<select id="getUsersByDocTaskId" resultType="edu.gd.ccp.entity.User">
+          select u.*
+          from user u INNER JOIN document d on u.organizationId=d.organizationId
+          where d.documentTaskId=#{documentTaskId}
+	</select>	
+	<!-- 获取某次任务的所有文档 -->
+  <delete id="deleteDocumentByTaskId" parameterType="java.lang.Integer" >
+    delete from document
+    where documentTaskId = #{documentTaskId,jdbcType=INTEGER}
+  </delete>
+</mapper>

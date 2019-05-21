@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.gd.ccp.dao.MeetingMapper" >
+  <resultMap id="BaseResultMap" type="edu.gd.ccp.entity.Meeting" >
+    <id column="meetingId" property="meetingid" jdbcType="INTEGER" />
+    <result column="meetingNo" property="meetingno" jdbcType="VARCHAR" />
+    <result column="meetingTypeId" property="meetingtypeid" jdbcType="INTEGER" />
+    <result column="publishUserId" property="publishuserid" jdbcType="VARCHAR" />
+    <result column="meetingTime" property="meetingtime" jdbcType="TIMESTAMP" />
+    <result column="meetingAddresses" property="meetingaddresses" jdbcType="VARCHAR" />
+    <result column="publishDate" property="publishdate" jdbcType="TIMESTAMP" />
+    <result column="enrollDeadline" property="enrolldeadline" jdbcType="TIMESTAMP" />
+    <result column="meetingTitle" property="meetingtitle" jdbcType="VARCHAR" />
+    <result column="accessory1" property="accessory1" jdbcType="VARCHAR" />
+    <result column="accessory2" property="accessory2" jdbcType="VARCHAR" />
+    <result column="accessory3" property="accessory3" jdbcType="VARCHAR" />
+    <result column="accessory4" property="accessory4" jdbcType="VARCHAR" />
+    <result column="accessory5" property="accessory5" jdbcType="VARCHAR" />
+    <result column="accessory6" property="accessory6" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="TINYINT" />
+    <result column="telephone" property="telephone" jdbcType="TINYINT" />
+    <result column="sex" property="sex" jdbcType="TINYINT" />
+    <result column="duty" property="duty" jdbcType="TINYINT" />
+    <result column="jobTitle" property="jobtitle" jdbcType="TINYINT" />
+    <result column="department" property="department" jdbcType="TINYINT" />
+    <result column="invoiceContent" property="invoicecontent" jdbcType="TINYINT" />
+    <result column="address" property="address" jdbcType="TINYINT" />
+    <result column="postCode" property="postcode" jdbcType="TINYINT" />
+    <result column="stay" property="stay" jdbcType="TINYINT" />
+    <result column="staystart" property="staystart" jdbcType="TINYINT" />
+    <result column="stayend" property="stayend" jdbcType="TINYINT" />
+    <result column="note" property="note" jdbcType="TINYINT" />
+  
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="edu.gd.ccp.entity.Meeting" extends="BaseResultMap" >
+    <result column="meetingContent" property="meetingcontent" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    meetingId, meetingNo, meetingTypeId, publishUserId, meetingTime, meetingAddresses, 
+    publishDate, enrollDeadline, meetingTitle, accessory1, accessory2, accessory3, accessory4, 
+    accessory5, accessory6, email, telephone, sex, duty, jobTitle, department, invoiceContent, 
+    address, postCode, stay, staystart, stayend, note
+  </sql>
+  <sql id="Blob_Column_List" >
+    meetingContent
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from meeting
+    where meetingId = #{meetingid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from meeting
+    where meetingId = #{meetingid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="edu.gd.ccp.entity.Meeting" >
+    insert into meeting (meetingId, meetingNo, meetingTypeId, 
+      publishUserId, meetingTime, meetingAddresses, 
+      publishDate, enrollDeadline, meetingTitle, 
+      accessory1, accessory2, accessory3, 
+      accessory4, accessory5, accessory6, 
+      email, telephone, sex, 
+      duty, jobTitle, department, 
+      invoiceContent, address, postCode, 
+      stay, staystart, stayend, 
+      note, meetingContent)
+    values (#{meetingid,jdbcType=INTEGER}, #{meetingno,jdbcType=VARCHAR}, #{meetingtypeid,jdbcType=INTEGER}, 
+      #{publishuserid,jdbcType=VARCHAR}, #{meetingtime,jdbcType=TIMESTAMP}, #{meetingaddresses,jdbcType=VARCHAR}, 
+      #{publishdate,jdbcType=TIMESTAMP}, #{enrolldeadline,jdbcType=TIMESTAMP}, #{meetingtitle,jdbcType=VARCHAR}, 
+      #{accessory1,jdbcType=VARCHAR}, #{accessory2,jdbcType=VARCHAR}, #{accessory3,jdbcType=VARCHAR}, 
+      #{accessory4,jdbcType=VARCHAR}, #{accessory5,jdbcType=VARCHAR}, #{accessory6,jdbcType=VARCHAR}, 
+      #{email,jdbcType=TINYINT}, #{telephone,jdbcType=TINYINT}, #{sex,jdbcType=TINYINT}, 
+      #{duty,jdbcType=TINYINT}, #{jobtitle,jdbcType=TINYINT}, #{department,jdbcType=TINYINT}, 
+      #{invoicecontent,jdbcType=TINYINT}, #{address,jdbcType=TINYINT}, #{postcode,jdbcType=TINYINT}, 
+      #{stay,jdbcType=TINYINT}, #{staystart,jdbcType=TINYINT}, #{stayend,jdbcType=TINYINT}, 
+      #{note,jdbcType=TINYINT}, #{meetingcontent,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="edu.gd.ccp.entity.Meeting" useGeneratedKeys="true" keyProperty="meetingid">
+
+       <selectKey resultType="java.lang.Integer" keyProperty="meetingid"
+			order="AFTER">
+			SELECT LAST_INSERT_ID() AS meetingid
+		</selectKey>
+		
+    insert into meeting
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="meetingid != null" >
+        meetingId,
+      </if>
+      <if test="meetingno != null" >
+        meetingNo,
+      </if>
+      <if test="meetingtypeid != null" >
+        meetingTypeId,
+      </if>
+      <if test="publishuserid != null" >
+        publishUserId,
+      </if>
+      <if test="meetingtime != null" >
+        meetingTime,
+      </if>
+      <if test="meetingaddresses != null" >
+        meetingAddresses,
+      </if>
+      <if test="publishdate != null" >
+        publishDate,
+      </if>
+      <if test="enrolldeadline != null" >
+        enrollDeadline,
+      </if>
+      <if test="meetingtitle != null" >
+        meetingTitle,
+      </if>
+      <if test="accessory1 != null" >
+        accessory1,
+      </if>
+      <if test="accessory2 != null" >
+        accessory2,
+      </if>
+      <if test="accessory3 != null" >
+        accessory3,
+      </if>
+      <if test="accessory4 != null" >
+        accessory4,
+      </if>
+      <if test="accessory5 != null" >
+        accessory5,
+      </if>
+      <if test="accessory6 != null" >
+        accessory6,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="telephone != null" >
+        telephone,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="duty != null" >
+        duty,
+      </if>
+      <if test="jobtitle != null" >
+        jobTitle,
+      </if>
+      <if test="department != null" >
+        department,
+      </if>
+      <if test="invoicecontent != null" >
+        invoiceContent,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="postcode != null" >
+        postCode,
+      </if>
+      <if test="stay != null" >
+        stay,
+      </if>
+      <if test="staystart != null" >
+        staystart,
+      </if>
+      <if test="stayend != null" >
+        stayend,
+      </if>
+      <if test="note != null" >
+        note,
+      </if>
+      <if test="meetingcontent != null" >
+        meetingContent,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="meetingid != null" >
+        #{meetingid,jdbcType=INTEGER},
+      </if>
+      <if test="meetingno != null" >
+        #{meetingno,jdbcType=VARCHAR},
+      </if>
+      <if test="meetingtypeid != null" >
+        #{meetingtypeid,jdbcType=INTEGER},
+      </if>
+      <if test="publishuserid != null" >
+        #{publishuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="meetingtime != null" >
+        #{meetingtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="meetingaddresses != null" >
+        #{meetingaddresses,jdbcType=VARCHAR},
+      </if>
+      <if test="publishdate != null" >
+        #{publishdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="enrolldeadline != null" >
+        #{enrolldeadline,jdbcType=TIMESTAMP},
+      </if>
+      <if test="meetingtitle != null" >
+        #{meetingtitle,jdbcType=VARCHAR},
+      </if>
+      <if test="accessory1 != null" >
+        #{accessory1,jdbcType=VARCHAR},
+      </if>
+      <if test="accessory2 != null" >
+        #{accessory2,jdbcType=VARCHAR},
+      </if>
+      <if test="accessory3 != null" >
+        #{accessory3,jdbcType=VARCHAR},
+      </if>
+      <if test="accessory4 != null" >
+        #{accessory4,jdbcType=VARCHAR},
+      </if>
+      <if test="accessory5 != null" >
+        #{accessory5,jdbcType=VARCHAR},
+      </if>
+      <if test="accessory6 != null" >
+        #{accessory6,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=TINYINT},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=TINYINT},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=TINYINT},
+      </if>
+      <if test="duty != null" >
+        #{duty,jdbcType=TINYINT},
+      </if>
+      <if test="jobtitle != null" >
+        #{jobtitle,jdbcType=TINYINT},
+      </if>
+      <if test="department != null" >
+        #{department,jdbcType=TINYINT},
+      </if>
+      <if test="invoicecontent != null" >
+        #{invoicecontent,jdbcType=TINYINT},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=TINYINT},
+      </if>
+      <if test="postcode != null" >
+        #{postcode,jdbcType=TINYINT},
+      </if>
+      <if test="stay != null" >
+        #{stay,jdbcType=TINYINT},
+      </if>
+      <if test="staystart != null" >
+        #{staystart,jdbcType=TINYINT},
+      </if>
+      <if test="stayend != null" >
+        #{stayend,jdbcType=TINYINT},
+      </if>
+      <if test="note != null" >
+        #{note,jdbcType=TINYINT},
+      </if>
+      <if test="meetingcontent != null" >
+        #{meetingcontent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="edu.gd.ccp.entity.Meeting" >
+    update meeting
+    <set >
+      <if test="meetingno != null" >
+        meetingNo = #{meetingno,jdbcType=VARCHAR},
+      </if>
+      <if test="meetingtypeid != null" >
+        meetingTypeId = #{meetingtypeid,jdbcType=INTEGER},
+      </if>
+      <if test="publishuserid != null" >
+        publishUserId = #{publishuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="meetingtime != null" >
+        meetingTime = #{meetingtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="meetingaddresses != null" >
+        meetingAddresses = #{meetingaddresses,jdbcType=VARCHAR},
+      </if>
+      <if test="publishdate != null" >
+        publishDate = #{publishdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="enrolldeadline != null" >
+        enrollDeadline = #{enrolldeadline,jdbcType=TIMESTAMP},
+      </if>
+      <if test="meetingtitle != null" >
+        meetingTitle = #{meetingtitle,jdbcType=VARCHAR},
+      </if>
+      <if test="accessory1 != null" >
+        accessory1 = #{accessory1,jdbcType=VARCHAR},
+      </if>
+      <if test="accessory2 != null" >
+        accessory2 = #{accessory2,jdbcType=VARCHAR},
+      </if>
+      <if test="accessory3 != null" >
+        accessory3 = #{accessory3,jdbcType=VARCHAR},
+      </if>
+      <if test="accessory4 != null" >
+        accessory4 = #{accessory4,jdbcType=VARCHAR},
+      </if>
+      <if test="accessory5 != null" >
+        accessory5 = #{accessory5,jdbcType=VARCHAR},
+      </if>
+      <if test="accessory6 != null" >
+        accessory6 = #{accessory6,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=TINYINT},
+      </if>
+      <if test="telephone != null" >
+        telephone = #{telephone,jdbcType=TINYINT},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=TINYINT},
+      </if>
+      <if test="duty != null" >
+        duty = #{duty,jdbcType=TINYINT},
+      </if>
+      <if test="jobtitle != null" >
+        jobTitle = #{jobtitle,jdbcType=TINYINT},
+      </if>
+      <if test="department != null" >
+        department = #{department,jdbcType=TINYINT},
+      </if>
+      <if test="invoicecontent != null" >
+        invoiceContent = #{invoicecontent,jdbcType=TINYINT},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=TINYINT},
+      </if>
+      <if test="postcode != null" >
+        postCode = #{postcode,jdbcType=TINYINT},
+      </if>
+      <if test="stay != null" >
+        stay = #{stay,jdbcType=TINYINT},
+      </if>
+      <if test="staystart != null" >
+        staystart = #{staystart,jdbcType=TINYINT},
+      </if>
+      <if test="stayend != null" >
+        stayend = #{stayend,jdbcType=TINYINT},
+      </if>
+      <if test="note != null" >
+        note = #{note,jdbcType=TINYINT},
+      </if>
+      <if test="meetingcontent != null" >
+        meetingContent = #{meetingcontent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where meetingId = #{meetingid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="edu.gd.ccp.entity.Meeting" >
+    update meeting
+    set meetingNo = #{meetingno,jdbcType=VARCHAR},
+      meetingTypeId = #{meetingtypeid,jdbcType=INTEGER},
+      publishUserId = #{publishuserid,jdbcType=VARCHAR},
+      meetingTime = #{meetingtime,jdbcType=TIMESTAMP},
+      meetingAddresses = #{meetingaddresses,jdbcType=VARCHAR},
+      publishDate = #{publishdate,jdbcType=TIMESTAMP},
+      enrollDeadline = #{enrolldeadline,jdbcType=TIMESTAMP},
+      meetingTitle = #{meetingtitle,jdbcType=VARCHAR},
+      accessory1 = #{accessory1,jdbcType=VARCHAR},
+      accessory2 = #{accessory2,jdbcType=VARCHAR},
+      accessory3 = #{accessory3,jdbcType=VARCHAR},
+      accessory4 = #{accessory4,jdbcType=VARCHAR},
+      accessory5 = #{accessory5,jdbcType=VARCHAR},
+      accessory6 = #{accessory6,jdbcType=VARCHAR},
+      email = #{email,jdbcType=TINYINT},
+      telephone = #{telephone,jdbcType=TINYINT},
+      sex = #{sex,jdbcType=TINYINT},
+      duty = #{duty,jdbcType=TINYINT},
+      jobTitle = #{jobtitle,jdbcType=TINYINT},
+      department = #{department,jdbcType=TINYINT},
+      invoiceContent = #{invoicecontent,jdbcType=TINYINT},
+      address = #{address,jdbcType=TINYINT},
+      postCode = #{postcode,jdbcType=TINYINT},
+      stay = #{stay,jdbcType=TINYINT},
+      staystart = #{staystart,jdbcType=TINYINT},
+      stayend = #{stayend,jdbcType=TINYINT},
+      note = #{note,jdbcType=TINYINT},
+      meetingContent = #{meetingcontent,jdbcType=LONGVARCHAR}
+    where meetingId = #{meetingid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="edu.gd.ccp.entity.Meeting" >
+    update meeting
+    set meetingNo = #{meetingno,jdbcType=VARCHAR},
+      meetingTypeId = #{meetingtypeid,jdbcType=INTEGER},
+      publishUserId = #{publishuserid,jdbcType=VARCHAR},
+      meetingTime = #{meetingtime,jdbcType=TIMESTAMP},
+      meetingAddresses = #{meetingaddresses,jdbcType=VARCHAR},
+      publishDate = #{publishdate,jdbcType=TIMESTAMP},
+      enrollDeadline = #{enrolldeadline,jdbcType=TIMESTAMP},
+      meetingTitle = #{meetingtitle,jdbcType=VARCHAR},
+      accessory1 = #{accessory1,jdbcType=VARCHAR},
+      accessory2 = #{accessory2,jdbcType=VARCHAR},
+      accessory3 = #{accessory3,jdbcType=VARCHAR},
+      accessory4 = #{accessory4,jdbcType=VARCHAR},
+      accessory5 = #{accessory5,jdbcType=VARCHAR},
+      accessory6 = #{accessory6,jdbcType=VARCHAR},
+      email = #{email,jdbcType=TINYINT},
+      telephone = #{telephone,jdbcType=TINYINT},
+      sex = #{sex,jdbcType=TINYINT},
+      duty = #{duty,jdbcType=TINYINT},
+      jobTitle = #{jobtitle,jdbcType=TINYINT},
+      department = #{department,jdbcType=TINYINT},
+      invoiceContent = #{invoicecontent,jdbcType=TINYINT},
+      address = #{address,jdbcType=TINYINT},
+      postCode = #{postcode,jdbcType=TINYINT},
+      stay = #{stay,jdbcType=TINYINT},
+      staystart = #{staystart,jdbcType=TINYINT},
+      stayend = #{stayend,jdbcType=TINYINT},
+      note = #{note,jdbcType=TINYINT}
+    where meetingId = #{meetingid,jdbcType=INTEGER}
+  </update>
+  
+  
+  <!-- List<Meeting> selectAllMeetings(); -->
+  <!-- 查找所有会议信息 -->
+  <select id="selectAllMeetings" resultType="edu.gd.ccp.entity.Meeting">
+  	SELECT <include refid="Base_Column_List" />
+  	FROM meeting
+	WHERE 1=1  	
+  </select>
+  
+  <!-- List<Meeting> selectMeetingByMeetingNo(String meetingNo); -->
+  <!-- 根据会议自编号查找会议信息 -->
+  <select id="selectMeetingByMeetingNo" resultType="edu.gd.ccp.entity.Meeting">
+  	SELECT <include refid="Base_Column_List" />
+  	FROM meeting
+  	WHERE meetingNo = #{meetingNo}
+  </select>
+  
+  <!-- List<Meeting> selectMeetingByPublishUserId(String userId); -->
+  <!-- 根据发布者ID查找会议信息 -->
+  <select id="selectMeetingByPublishUserId" resultType="edu.gd.ccp.entity.Meeting">
+  	SELECT <include refid="Base_Column_List" />
+  	FROM meeting
+  	WHERE publishUserId = #{userId}
+  </select>
+
+  
+  <!-- List<Meeting> selectMeetingByTypeId(Integer typeId); -->
+  <!-- 根据会议类别查找会议信息 -->
+  <select id="selectMeetingByTypeId" resultType="edu.gd.ccp.entity.Meeting">
+  	SELECT <include refid="Base_Column_List" />
+  	FROM meeting
+  	WHERE meetingTypeId=#{typeId} 
+  </select>
+
+	<!-- Integer selectCountAllMeeting(); -->
+	<!-- 查询总的会议数 -->
+  <select id="selectCountAllMeeting" resultType="Integer">
+  	SELECT COUNT(meetingId)
+  	FROM meeting
+  	WHERE 1=1
+  </select>
+  
+  <!-- Integer selectCountMeetingInMeetingNo(String meetingNo); -->
+  <!-- 在该会议自编号下的会议数 -->
+  <select id="selectCountMeetingInMeetingNo">
+  	SELECT COUNT(meetingId)
+  	FROM meeting
+  	WHERE meetingNo = #{meetingNo}
+  </select>
+  
+  <!-- Integer selectCountMeetingInPublishUserId(String publishUserId); -->
+  <!-- 在该会议发布人下的会议总数 -->
+  <select id="selectCountMeetingInPublishUserId">
+  	SELECT COUNT(meetingId)
+  	FROM meeting
+  	WHERE publishUserId = #{userId}
+  </select>
+  
+  <!-- Integer selectCountMeetingInMeetingTypeId(Integer typeId); -->
+  <!--  -->
+  <select id="selectCountMeetingInMeetingTypeId" >
+  	SELECT COUNT(meetingId)
+  	FROM meeting
+  	WHERE meetingTypeId=#{typeId} 
+  </select>
+  
+  <!-- ~~~12月新增~~~ -->
+  <!-- List<Meeting> selectMeetingByTitle(Integer typeId); -->
+  <!-- 根据会议标题查找会议信息 -->
+  <select id="selectMeetingByTitle" resultType="Map">
+select m.meetingId,m.meetingNo,m.meetingTitle,m.meetingTime,m.meetingAddresses,m.publishDate,count(ma.attendeeId) as count,ma.attendeeName
+from meeting m LEFT JOIN meetingtask mt on m.meetingId=mt.meetingId 
+LEFT JOIN  meetingattendees ma on mt.taskId=ma.taskId
+where 1=1
+  	 <if test="meetingTitle!=null">
+  	   and INSTR(m.meetingtitle,#{meetingTitle})
+  	 </if> 
+  	 <if test="meetingNo!=null">
+  	   and INSTR(m.meetingno,#{meetingNo})
+  	 </if>   
+  	 group by m.meetingId	 
+  	 order by m.meetingId desc
+      <if test="offset!=null and limit!=null">
+			 LIMIT #{offset}, #{limit}
+	  </if> 	
+	  
+  </select>
+  
+   <!-- 根据会议标题查找会议个数 -->
+  <select id="getCountMeetingByTitle" resultType="Integer">
+  	SELECT COUNT(meetingId)
+  	FROM meeting
+   	WHERE 1=1
+  	 <if test="meetingTitle!=null">
+  	   and INSTR(meetingTitle,#{meetingTitle})
+  	 </if> 
+   	 <if test="meetingNo!=null">
+  	   and INSTR(meetingNo,#{meetingNo})
+  	 </if>    	 
+   </select> 
+   
+  <!-- 增加于 2018 12 25 -->
+  <!-- List<Message> selectMessageWithState(String state) -->
+  <!-- 根据状态查找消息 -->
+  <select id="selectMessageWithState" resultType="edu.gd.ccp.entity.Message">
+  	SELECT <include refid="Base_Column_List"/>
+  	FROM message
+  	WHERE state = #{state}
+  </select>
+  
+  <!-- 增加于 12 26 -->
+  <!-- List<Message> selectAllMessags(); -->
+  <!-- 获取message所有记录 -->
+  <select id="selectAllMessags" resultType="edu.gd.ccp.entity.Message">
+  	SELECT <include refid="Base_Column_List" />
+  	FROM message
+  	WHERE 1=1
+  </select>
+</mapper>

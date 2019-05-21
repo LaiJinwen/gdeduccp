@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.gd.ccp.dao.MessageMapper">
+	<resultMap id="BaseResultMap" type="edu.gd.ccp.entity.Message">
+		<id column="msgId" property="msgid" jdbcType="INTEGER" />
+		<result column="replyId" property="replyid" jdbcType="INTEGER" />
+		<result column="title" property="title" jdbcType="VARCHAR" />
+		<result column="content" property="content" jdbcType="VARCHAR" />
+		<result column="fromUserId" property="fromuserid" jdbcType="VARCHAR" />
+		<result column="fromOrganizationNo" property="fromorganizationno"
+			jdbcType="VARCHAR" />
+		<result column="fromOrganizationId" property="fromorganizationid"
+			jdbcType="INTEGER" />
+		<result column="sendTime" property="sendtime" jdbcType="TIMESTAMP" />
+		<result column="readTime" property="readtime" jdbcType="TIMESTAMP" />
+		<result column="toUserId" property="touserid" jdbcType="VARCHAR" />
+		<result column="state" property="state" jdbcType="CHAR" />
+		<result column="toOrganizationNo" property="toorganizationno"
+			jdbcType="VARCHAR" />
+		<result column="toOrganizationId" property="toorganizationid"
+			jdbcType="INTEGER" />
+		<result column="toOrganizationNos" property="toorganizationnos"
+			jdbcType="VARCHAR" />
+		 <result column="toOrganizationIds" property="toorganizationids"
+			jdbcType="VARCHAR" />		
+	</resultMap>
+	<sql id="Base_Column_List">
+		msgId, replyid,title, content, fromUserId, fromOrganizationNo,
+		fromOrganizationId, sendTime,
+		readTime, toUserId, state, toOrganizationNo, toOrganizationId,toOrganizationNos,toOrganizationIds
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from message
+		where msgId = #{msgid,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from message
+		where msgId = #{msgid,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="edu.gd.ccp.entity.Message">
+		insert into message (msgId, replyId,title, content,
+		fromUserId, fromOrganizationNo, fromOrganizationId,
+		sendTime, readTime, toUserId,
+		state, toOrganizationNo, toOrganizationId,toOrganizationNos,toOrganizationIds
+		)
+		values (#{msgid,jdbcType=INTEGER},#{replyid,jdbcType=INTEGER},
+		#{title,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR},
+		#{fromuserid,jdbcType=VARCHAR},
+		#{fromorganizationno,jdbcType=VARCHAR},
+		#{fromorganizationid,jdbcType=INTEGER},
+		#{sendtime,jdbcType=TIMESTAMP}, #{readtime,jdbcType=TIMESTAMP},
+		#{touserid,jdbcType=VARCHAR},
+		#{state,jdbcType=CHAR}, #{toorganizationno,jdbcType=VARCHAR},
+		#{toorganizationid,jdbcType=INTEGER}, 
+		#{toorganizationnos,jdbcType=VARCHAR}, 
+		#{toorganizationids,jdbcType=VARCHAR}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="edu.gd.ccp.entity.Message">
+		insert into message
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="msgid != null">
+				msgId,
+			</if>
+			<if test="replyid != null">
+				replyId,
+			</if>
+			<if test="title != null">
+				title,
+			</if>
+			<if test="content != null">
+				content,
+			</if>
+			<if test="fromuserid != null">
+				fromUserId,
+			</if>
+			<if test="fromorganizationno != null">
+				fromOrganizationNo,
+			</if>
+			<if test="fromorganizationid != null">
+				fromOrganizationId,
+			</if>
+			<if test="sendtime != null">
+				sendTime,
+			</if>
+			<if test="readtime != null">
+				readTime,
+			</if>
+			<if test="touserid != null">
+				toUserId,
+			</if>
+			<if test="state != null">
+				state,
+			</if>
+			<if test="toorganizationno != null">
+				toOrganizationNo,
+			</if>
+			<if test="toorganizationid != null">
+				toOrganizationId,
+			</if>
+			<if test="toorganizationnos != null">
+				toOrganizationNos,
+			</if>
+			<if test="toorganizationids != null">
+				toOrganizationIds,
+			</if>			
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="msgid != null">
+				#{msgid,jdbcType=INTEGER},
+			</if>
+			<if test="replyid != null">
+				#{replyid,jdbcType=INTEGER},
+			</if>
+			<if test="title != null">
+				#{title,jdbcType=VARCHAR},
+			</if>
+			<if test="content != null">
+				#{content,jdbcType=VARCHAR},
+			</if>
+			<if test="fromuserid != null">
+				#{fromuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="fromorganizationno != null">
+				#{fromorganizationno,jdbcType=VARCHAR},
+			</if>
+			<if test="fromorganizationid != null">
+				#{fromorganizationid,jdbcType=INTEGER},
+			</if>
+			<if test="sendtime != null">
+				#{sendtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="readtime != null">
+				#{readtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="touserid != null">
+				#{touserid,jdbcType=VARCHAR},
+			</if>
+			<if test="state != null">
+				#{state,jdbcType=CHAR},
+			</if>
+			<if test="toorganizationno != null">
+				#{toorganizationno,jdbcType=VARCHAR},
+			</if>
+			<if test="toorganizationid != null">
+				#{toorganizationid,jdbcType=INTEGER},
+			</if>
+			<if test="toorganizationnos != null">
+				#{toorganizationnos,jdbcType=VARCHAR},
+			</if>
+			<if test="toorganizationids != null">
+				#{toorganizationids,jdbcType=VARCHAR},
+			</if>						
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="edu.gd.ccp.entity.Message">
+		update message
+		<set>
+			<if test="title != null">
+				title = #{title,jdbcType=VARCHAR},
+			</if>
+			<if test="content != null">
+				content = #{content,jdbcType=VARCHAR},
+			</if>
+			<if test="fromuserid != null">
+				fromUserId = #{fromuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="fromorganizationno != null">
+				fromOrganizationNo = #{fromorganizationno,jdbcType=VARCHAR},
+			</if>
+			<if test="fromorganizationid != null">
+				fromOrganizationId = #{fromorganizationid,jdbcType=INTEGER},
+			</if>
+			<if test="sendtime != null">
+				sendTime = #{sendtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="readtime != null">
+				readTime = #{readtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="touserid != null">
+				toUserId = #{touserid,jdbcType=VARCHAR},
+			</if>
+			<if test="state != null">
+				state = #{state,jdbcType=CHAR},
+			</if>
+			<if test="toorganizationno != null">
+				toOrganizationNo = #{toorganizationno,jdbcType=VARCHAR},
+			</if>
+			<if test="toorganizationid != null">
+				toOrganizationId = #{toorganizationid,jdbcType=INTEGER},
+			</if>
+			<if test="toorganizationnos != null">
+				toOrganizationNos = #{toorganizationnos,jdbcType=VARCHAR},
+			</if>
+			<if test="toorganizationids != null">
+				toOrganizationIds = #{toorganizationids,jdbcType=VARCHAR},
+			</if>			
+		</set>
+		where msgId = #{msgid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="edu.gd.ccp.entity.Message">
+		update message
+		set title = #{title,jdbcType=VARCHAR},
+		content = #{content,jdbcType=VARCHAR},
+		fromUserId = #{fromuserid,jdbcType=VARCHAR},
+		fromOrganizationNo = #{fromorganizationno,jdbcType=VARCHAR},
+		fromOrganizationId = #{fromorganizationid,jdbcType=INTEGER},
+		sendTime = #{sendtime,jdbcType=TIMESTAMP},
+		readTime = #{readtime,jdbcType=TIMESTAMP},
+		toUserId = #{touserid,jdbcType=VARCHAR},
+		state = #{state,jdbcType=CHAR},
+		toOrganizationNo = #{toorganizationno,jdbcType=VARCHAR},
+		toOrganizationId = #{toorganizationid,jdbcType=INTEGER}
+		toOrganizationNos = #{toorganizationnos,jdbcType=VARCHAR},
+		toOrganizationIds = #{toorganizationids,jdbcType=VARCHAR}		
+		where msgId = #{msgid,jdbcType=INTEGER}
+	</update>
+
+
+	<!-- 2018.12.21 -->
+	<!-- 发送消息 -->
+	<insert id="sendMessageToAdmin" parameterType="edu.gd.ccp.entity.Message">
+		 insert into message (msgId, replyId,title, content,
+		fromUserId, fromOrganizationNo, fromOrganizationId,
+		sendTime, readTime, toUserId,
+		state, toOrganizationNo, toOrganizationId,toOrganizationNos,toOrganizationIds
+		)
+		values (#{msgid,jdbcType=INTEGER},#{replyid,jdbcType=INTEGER},
+		#{title,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR},
+		#{fromuserid,jdbcType=VARCHAR},
+		#{fromorganizationno,jdbcType=VARCHAR},
+		#{fromorganizationid,jdbcType=INTEGER},
+		#{sendtime,jdbcType=TIMESTAMP}, #{readtime,jdbcType=TIMESTAMP},
+		#{touserid,jdbcType=VARCHAR},
+		#{state,jdbcType=CHAR}, #{toorganizationno,jdbcType=VARCHAR},
+		#{toorganizationid,jdbcType=INTEGER}, 
+		#{toorganizationnos,jdbcType=VARCHAR}, 
+		#{toorganizationids,jdbcType=VARCHAR}
+		)
+	</insert>
+
+	<!-- 统计消息总数 -->
+	<select id="countMessageNum" resultType="Integer">
+		select
+		count(*)
+		from
+		message
+		where
+		replyId = #{replyId}
+		and(
+		toOrganizationId = #{organizationId}
+		or toUserId = #{userId}
+		or toOrganizationNo = #{organizationNo}
+		or fromOrganizationId = #{organizationId}
+		or fromUserId = #{userId}
+		or fromOrganizationNo = #{organizationNo}
+		or INSTR(toOrganizationNos,#{organizationNo})
+		or INSTR(toOrganizationIds,#{organizationId})
+		)
+	</select>
+	
+<!-- 统计未读消息总数 -->
+	<select id="countUnreadMessageNum" resultType="Integer">
+		select
+		count(*)
+		from
+		message
+		where
+		replyId = #{replyId}
+		and(
+		 INSTR(toOrganizationIds,#{idReadState})
+		)
+	
+	</select>
+
+	<!-- 列出所有初始发送消息 -->
+	<select id="listAllMessage" resultType="edu.gd.ccp.pojo.MessageList">
+		select
+		m.msgId,m.replyId,m.title,m.content,m.fromUserId,m.fromOrganizationNo,
+		m.fromOrganizationId,m.sendTime,m.readTime,m.toUserId,m.state,
+		m.toOrganizationNo,m.toOrganizationId,
+		u.userId,u.userName
+		from
+		message m
+		INNER JOIN
+		user u
+		where m.fromOrganizationId = u.organizationId
+		and (
+		m.toOrganizationId = #{organizationId}
+		or m.toUserId = #{userId}
+		or m.toOrganizationNo = #{organizationNo}
+
+		or m.fromOrganizationId = #{organizationId}
+		or m.fromUserId = #{userId}
+		or m.fromOrganizationNo = #{organizationNo}
+		or INSTR(toOrganizationNos,#{organizationNo})
+		or INSTR(toOrganizationIds,#{organizationId})
+		)
+		and (m.replyId = #{replyId} or m.replyId is NULL)
+		ORDER BY m.sendTime DESC
+		<if test="offset!=null and limit!=null">
+			LIMIT #{offset}, #{limit}
+		</if>
+	</select>
+
+	<update id="updateMessageStatus">
+		update
+		message
+		set
+		readTime = DATE_FORMAT(NOW(),'%Y-%m-%d %H:%m:%s'),
+		state = '已读'
+		where msgId = #{msgId}
+	</update>
+
+	<!-- 列出回复消息 -->
+	<select id="listReplyMessage" resultType="map">
+		select
+		m.msgId,m.replyId,m.title,m.content,m.fromUserId,m.fromOrganizationNo,
+		m.fromOrganizationId,m.sendTime,m.readTime,m.toUserId,m.state,
+		m.toOrganizationNo,m.toOrganizationId,m.toOrganizationNos,m.toOrganizationIds,
+		u.userId,u.userName
+		from
+		message m
+		INNER JOIN
+		user u
+		where m.replyId = #{replyId} and m.fromUserId = u.userId
+		ORDER BY m.sendTime
+	</select>
+
+	<select id="getReplyMessageByReplyId" resultType="edu.gd.ccp.entity.Message">
+		select
+		msgId,replyId,title,content,fromUserId,fromOrganizationNo,
+		fromOrganizationId,sendTime,readTime,toUserId,state,
+		toOrganizationNo,toOrganizationId,toOrganizationNos,toOrganizationIds
+		from
+		message m
+		where replyId = #{replyId}
+	</select>
+
+	<!-- 增加于 2018 12 25 -->
+	<!-- List<Message> selectMessageWithState(String state) -->
+	<!-- 根据状态查找消息 -->
+	<select id="selectMessageWithState" resultType="edu.gd.ccp.entity.Message">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM message
+		WHERE state = #{state}
+	</select>
+
+	<!-- 增加于 12 26 -->
+	<!-- List<Message> selectAllMessags(); -->
+	<!-- 获取message所有非回复消息记录 -->
+	<select id="selectAllMessags" resultType="Map">
+		select
+		m.msgId,m.replyid,m.title,m.content,m.fromUserId,m.fromOrganizationNo,m.fromOrganizationId,m.sendTime,m.readTime,m.toUserId,m.state,
+		m.toOrganizationId,m.toOrganizationNo,m.toOrganizationIds,m.toOrganizationNos,o.organizationName as fromOrg 
+		from message m LEFT JOIN organization o on
+		m.fromOrganizationNo=o.organizationNo
+		where (m.replyid IS NULL or  m.replyid=0)
+		order by m.sendTime desc
+	</select>
+<!-- 获取message所有回复消息记录 -->
+	<select id="getReplyMessageInfoByReplyId" resultType="Map">
+		select
+		m.msgId,m.replyid,m.title,m.content,m.fromUserId,m.fromOrganizationNo,m.fromOrganizationId,m.sendTime,m.readTime,m.toUserId,m.state,
+		m.toOrganizationId,m.toOrganizationNo,m.toOrganizationIds,m.toOrganizationNos,o.organizationName as fromOrg,
+		o2.organizationName as toOrg
+		from message m left JOIN organization o on
+		m.fromOrganizationId=o.organizationId
+		left JOIN organization o2 on m.toOrganizationId=o2.organizationId
+		where m.replyId = #{replyId}
+	</select>
+	
+	<!-- 获取单位相关message所有记录 -->
+	<select id="selectAllMessagsByOrganizationId" resultType="Map">
+		select
+		m.msgId,m.replyid,m.title,m.content,m.fromUserId,m.fromOrganizationNo,m.fromOrganizationId,m.sendTime,m.readTime,m.toUserId,m.state,
+		m.toOrganizationId,m.toOrganizationNo,m.toOrganizationIds,m.toOrganizationNos,o.organizationName as fromOrg
+		from message m left JOIN organization o on
+		m.fromOrganizationNo=o.organizationNo
+		
+		where (m.replyid IS NULL or  m.replyid=0)
+			and( m.fromOrganizationId = #{organizationId} or m.toOrganizationId = #{organizationId}
+		            or INSTR(toOrganizationIds,#{organizationId})
+			)
+		order by m.sendTime desc
+	</select>	
+	 <!-- 高校端阅读信息 -->
+		<update id="schoolUpdateMessageStatus">
+		update
+		message
+		set
+		readTime = DATE_FORMAT(NOW(),'%Y-%m-%d %H:%m:%s'),
+        toOrganizationIds=replace(toOrganizationIds,#{str1},#{str2}),
+		state = '已读'
+		where msgId = #{msgId}
+	</update>
+	
+		
+</mapper>

@@ -1,0 +1,333 @@
+#title h2{
+	font-weight: normal !important;
+	font-stretch: normal !important;
+	letter-spacing: 0px;
+	color: #ffffff;
+	font-size: 20px;
+	text-align: center;
+	font-family: SourceHanSansCN-Regular;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding-top: 25px;
+	text-shadow:none !important;
+}
+
+#title{
+	height: 64px;
+	background-color: #c11e21;
+}
+
+
+#headnavbar a{
+	background-color: #fbfbf8;
+	border-style: none;
+	font-size: 18px;
+    font-weight: normal;
+    font-stretch: normal;
+}
+
+#headnavbar li{
+	height: 100%;
+	background-color:  #fff !important;
+	border: none;
+}
+
+.ui-input-search {
+	border-color: rgb(234, 234, 234) !important;
+	width: 18.625em !important;
+	height: 2.9em  !important;
+	margin-left: 1.40625em !important;
+	margin-top: 13px !important;
+	border-radius: 44px !important;
+	box-shadow: none !important;
+}
+.ui-input-search input{
+	min-height: 3.1em !important;
+	font-size: 15px !important;
+	margin-left: 18px !important; 
+}
+
+.ui-input-search:after{
+	left: 0.9em
+}
+
+.ui-input-text{
+	border-width: 0px; 
+}
+
+#btnarea{
+	 margin-top: 45px;
+}
+.ui-input-btn {
+	text-shadow:none !important;
+	color: #fff !important;  
+/*	font: #fff !important;  */
+	font-weight: normal !important;
+	font-stretch: normal !important;
+	font-size: 18px !important;
+	border-color: #fff !important;
+	width: 340px !important;
+	height: 30px  !important;
+	margin-left: 1.40625em !important;
+	margin-top: 13px !important;
+	border-radius: 44px !important;
+	box-shadow: none !important;
+	border: solid 1px #c11e21;
+	background-color: #c11e21 !important;
+}
+
+#maincontent{
+	padding: 0px;
+}
+#mainbody{
+	margin: 0 auto;
+	height: 580px;
+	width: 100%;
+}
+
+#myIframe{
+	height: 100%;
+	width: 100% ;
+}
+
+
+
+#inputarea {
+	align-content: center;
+	width: 320px;
+}
+
+#inputarea a{
+	margin-left: 10px;
+	font-weight: normal !important;
+	font-stretch: normal !important;
+}
+
+#btnarea2 {
+	width: 160px;
+	margin-left: 190px;
+}
+#btnarea2 a{
+	color: #676666 !important;
+}
+
+#listitem{
+	height: 58px;
+}
+
+#doclist{
+	margin-top: 10px; 
+}
+
+#passage{
+	padding-top: 10px
+}
+
+
+#footnavbar a{
+	background-color: #fbfbf8;
+	border-style: none;
+	font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    padding-bottom:  0px !important;
+    font-weight: normal !important;
+	font-stretch: normal !important;
+}
+
+#footnavbar li{
+	height: 100%;
+	background-color:  #fff !important;
+	border: none;
+}
+
+.noactive{
+	color: #999999 !important;
+}
+.active{
+	color: #c11e21 !important;
+}
+
+
+#searchlist{
+	margin-top: 15px;
+}
+
+#searchlist li h4{
+	font-size: 19px;
+	color:  #333333 !important;
+}
+
+#searchlist li p{
+	color:  #999999;
+	font-size: 14px;
+	font-weight: normal;
+	font-stretch: normal;
+}
+
+#attendlist{
+	margin-top: 10px;
+}
+
+#li-info{
+	padding-top: 10px;
+	width: 375px;
+}
+
+#li-info-meetingattend{
+	width: 375px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+#info-left{
+	float: left;
+}
+
+#info-right{
+	float: right;
+}
+
+.ui-list-info{
+	padding-right: 0px !important;
+	width: 370px !important;
+}
+
+
+
+#progressdiv{
+	margin-top: 2.5%;
+	right:  8px;
+	width: 50%;
+	position: absolute;
+}
+
+#progressdiv p{
+	text-align: right;
+	font-weight: normal;
+	font-stretch: normal;
+	color: #666666;
+	font-size: 14px;
+	padding-top: 4px;
+}
+
+.ui-progress {
+	height: 3px;
+}
+.ui-progress span{
+	background: #c11e21 !important;
+}
+
+#progresser{
+	margin-top: 4.5px;
+}
+
+#div1{
+	width: 45%;
+}
+#div1 img{
+	margin-top: 35%;
+	height: 35px;
+	width: 35px;
+}
+
+#div1 p{
+	padding-top: 5%;
+	font-size: 15.5px;
+}
+
+#imagediv{
+	height: 100%;
+	float: left;
+}
+
+#namediv{
+	padding-left: 40px;
+	padding-top: 7px;
+}
+
+.ui-icon-document-1:after{
+	background-image: url("../img/55.png");
+	background-color: white;
+	background-size: 20px 22px;	
+	border-radius: 0px;
+}
+
+.ui-icon-meeting-1:after{
+	background-image: url("../img/22.png");
+	background-color: white;
+	background-size: 20px 22px;	
+	border-radius: 0px;
+}
+
+.ui-icon-user-1:after{
+	background-image: url("../img/33.png");
+	background-color: white;
+	background-size: 20px 22px;	
+	border-radius: 0px;
+}
+
+.ui-icon-document-2:after{
+	background-image: url("../img/5.png");
+	background-color: white;
+	background-size: 20px 22px;	
+	border-radius: 0px;
+}
+
+.ui-icon-meeting-2:after{
+	background-image: url("../img/2.png");
+	background-color: white;
+	background-size: 20px 22px;	
+	border-radius: 0px;
+}
+
+.ui-icon-user-2:after{
+	background-image: url("../img/3.png");
+	background-color: white;
+	background-size: 20px 22px;	
+	border-radius: 0px;
+}
+
+
+.schoollist li{
+	height: 60px !important;
+}
+
+.schoollist li h4{
+	padding-top: 9px;
+	color: #333333;
+	font-size: 18px;  
+}
+
+#infodiv li h1{
+	font-size: 20px;
+}
+
+#infodiv li p{
+	font-size: 13.5px;
+}
+
+#li-main{
+	margin-top: 40px;
+}
+
+
+.li-subtitle{
+	float: left;
+}
+
+.li-maininfo{
+	margin-left: 30px;
+	float: left;
+}
+
+#quit{
+	min-height: 30px !important;
+}
+
+#photo{
+	margin-left: 15px;
+	margin-top: 15px;
+	width: 60px;
+	height: 60px;
+}

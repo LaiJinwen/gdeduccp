@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.gd.ccp.dao.MeetingTaskMapper" >
+  <resultMap id="BaseResultMap" type="edu.gd.ccp.entity.MeetingTask" >
+    <id column="taskId" property="taskid" jdbcType="INTEGER" />
+    <result column="meetingNo" property="meetingno" jdbcType="VARCHAR" />
+    <result column="meetingId" property="meetingid" jdbcType="INTEGER" />
+    <result column="organizationId" property="organizationid" jdbcType="INTEGER" />
+    <result column="organizationNo" property="organizationno" jdbcType="VARCHAR" />
+    <result column="attendanceState" property="attendancestate" jdbcType="VARCHAR" />
+    <result column="attendeeNumber" property="attendeenumber" jdbcType="INTEGER" />
+    <result column="contacts" property="contacts" jdbcType="VARCHAR" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+     <result column="remind" property="remind" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    taskId, meetingNo, meetingId, organizationId, organizationNo, attendanceState, attendeeNumber, 
+    contacts, mobile, email,remind
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from meetingtask
+    where taskId = #{taskid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from meetingtask
+    where taskId = #{taskid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="edu.gd.ccp.entity.MeetingTask" >
+    insert into meetingtask (taskId, meetingNo, meetingId, 
+      organizationId, organizationNo, attendanceState, 
+      attendeeNumber, contacts, mobile, 
+      email)
+    values (#{taskid,jdbcType=INTEGER}, #{meetingno,jdbcType=VARCHAR}, #{meetingid,jdbcType=INTEGER}, 
+      #{organizationid,jdbcType=INTEGER}, #{organizationno,jdbcType=VARCHAR}, #{attendancestate,jdbcType=VARCHAR}, 
+      #{attendeenumber,jdbcType=INTEGER}, #{contacts,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="edu.gd.ccp.entity.MeetingTask" useGeneratedKeys="true" keyProperty="taskid" >
+      
+    insert into meetingtask
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="taskid != null" >
+        taskId,
+      </if>
+      <if test="meetingno != null" >
+        meetingNo,
+      </if>
+      <if test="meetingid != null" >
+        meetingId,
+      </if>
+      <if test="organizationid != null" >
+        organizationId,
+      </if>
+      <if test="organizationno != null" >
+        organizationNo,
+      </if>
+      <if test="attendancestate != null" >
+        attendanceState,
+      </if>
+      <if test="attendeenumber != null" >
+        attendeeNumber,
+      </if>
+      <if test="contacts != null" >
+        contacts,
+      </if>
+      <if test="mobile != null" >
+        mobile,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="taskid != null" >
+        #{taskid,jdbcType=INTEGER},
+      </if>
+      <if test="meetingno != null" >
+        #{meetingno,jdbcType=VARCHAR},
+      </if>
+      <if test="meetingid != null" >
+        #{meetingid,jdbcType=INTEGER},
+      </if>
+      <if test="organizationid != null" >
+        #{organizationid,jdbcType=INTEGER},
+      </if>
+      <if test="organizationno != null" >
+        #{organizationno,jdbcType=VARCHAR},
+      </if>
+      <if test="attendancestate != null" >
+        #{attendancestate,jdbcType=VARCHAR},
+      </if>
+      <if test="attendeenumber != null" >
+        #{attendeenumber,jdbcType=INTEGER},
+      </if>
+      <if test="contacts != null" >
+        #{contacts,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="edu.gd.ccp.entity.MeetingTask" >
+    update meetingtask
+    <set >
+      <if test="meetingno != null" >
+        meetingNo = #{meetingno,jdbcType=VARCHAR},
+      </if>
+      <if test="meetingid != null" >
+        meetingId = #{meetingid,jdbcType=INTEGER},
+      </if>
+      <if test="organizationid != null" >
+        organizationId = #{organizationid,jdbcType=INTEGER},
+      </if>
+      <if test="organizationno != null" >
+        organizationNo = #{organizationno,jdbcType=VARCHAR},
+      </if>
+      <if test="attendancestate != null" >
+        attendanceState = #{attendancestate,jdbcType=VARCHAR},
+      </if>
+      <if test="attendeenumber != null" >
+        attendeeNumber = #{attendeenumber,jdbcType=INTEGER},
+      </if>
+      <if test="contacts != null" >
+        contacts = #{contacts,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+         <if test="remind != null" >
+        remind = #{remind,jdbcType=INTEGER},
+      </if>
+    </set>
+    where taskId = #{taskid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="edu.gd.ccp.entity.MeetingTask" >
+    update meetingtask
+    set meetingNo = #{meetingno,jdbcType=VARCHAR},
+      meetingId = #{meetingid,jdbcType=INTEGER},
+      organizationId = #{organizationid,jdbcType=INTEGER},
+      organizationNo = #{organizationno,jdbcType=VARCHAR},
+      attendanceState = #{attendancestate,jdbcType=VARCHAR},
+      attendeeNumber = #{attendeenumber,jdbcType=INTEGER},
+      contacts = #{contacts,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+       remind = #{remind,jdbcType=INTEGER}
+    where taskId = #{taskid,jdbcType=INTEGER}
+  </update>
+  
+	<!-- List<MeetingTask> selectAllMeetingTask(); -->
+	<!-- 返回所有记录信息 -->
+	<select id="selectAllMeetingTask" resultType="edu.gd.ccp.entity.MeetingTask">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM meetingtask
+		WHERE 1=1
+	</select>
+	
+	<!-- 增加于2018/11/23, 列出该组织所有会议  --> 
+  <select id = "listAllMeetingByOrganizationId" resultType="map">
+select mt.taskId, mt.meetingId, mt.organizationId, mt.attendanceState, mt.attendeeNumber, mt.contacts, mt.Mobile, mt.email,   m.meetingNo, m.meetingTypeId, m.meetingTime, m.meetingAddresses, m.publishDate, m.enrollDeadline, m.meetingTitle, m.accessory1, m.accessory2, m.accessory3, m.accessory4, m.accessory5, m.accessory6
+from meetingtask mt INNER JOIN meeting m ON mt.meetingId = m.meetingId 
+  	where mt.organizationId = #{organizationId}
+  	<if test="attendanceState != null">
+			and mt.attendanceState= #{attendanceState}
+	</if>
+  	order by meetingTime DESC
+  	<if test="offset!=null and limit!=null">
+		LIMIT #{offset}, #{limit}
+	</if>
+  </select>
+  
+	<!-- 统计该组织所有会议数   -->
+	<select id = "getMeetingCountByOrganizationId" resultType = "Integer">
+		SELECT 
+			count(*)
+		FROM 
+			meetingtask mt INNER JOIN meeting m ON mt.meetingId = m.meetingId 
+		where organizationId = #{organizationId}
+		<if test="attendanceState != null">
+			and attendanceState= #{attendanceState}
+	</if>
+	</select>
+	
+	<!--  依赖单个会议的taskId，列出该会议的详细信息  --> 
+  <select id = "getMeetingDetailByTaskId" resultType = "map">
+  	select mt.taskId, mt.meetingId, mt.organizationId, mt.attendanceState, mt.attendeeNumber, 
+  		mt.contacts, mt.Mobile, mt.email, mt.attendeesName,
+  		m.meetingNo, m.meetingTypeId, m.meetingTime, m.meetingAddresses, m.publishDate,
+  		m.enrollDeadline, m.meetingTitle, 
+  		m.accessory1, m.accessory2, m.accessory3, m.accessory4, m.accessory5, m.accessory6
+  	from meetingtask mt 
+  	INNER JOIN meeting m ON
+  		mt.meetingId = m.meetingId
+  	where mt.taskId = #{taskId}
+
+  </select>
+
+
+
+	<!-- 增加于2018/11/25 -->
+  	<!-- 由meetingId查询会议信息 -->
+  	<select id = "getMeetingMessageByMeetingId" resultType = "edu.gd.ccp.entity.Meeting">
+  		select
+  			meetingId, meetingNo,meetingTypeId, publishUserId, meetingTime, meetingAddresses, 
+  			publishDate, enrollDeadline, meetingTitle, meetingContent,
+  			accessory1, accessory2, accessory3, accessory4, accessory5, accessory6
+ 	 	from 
+  			meeting
+  		where meetingId = #{meetingId}
+  	</select>
+	
+	<!-- 用户扫描二维码，进入填写信息页面，完成签到，提交信息 -->
+	<update id = "updateMeetingWhenSignature">
+		update
+			meetingtask
+		set
+			attendanceState = '已参加'
+			<if test = "attendeeNumber != null">
+				, attendeeNumber = #{attendeeNumber}
+			</if>
+			<if test = "contacts != null">
+				, contacts = #{contacts}
+			</if>
+			<if test = "Mobile != null">
+				, Mobile = #{Mobile}
+			</if>
+			<if test = "email != null">
+				, email =#{email}
+			</if>
+			<if test = "attendeesName != null">
+				, attendeesName = #{attendeesName}
+			</if>
+		where organizationId = #{organizationId} and meetingId = #{meetingId}
+	</update>
+	
+	<!-- 根据用户编号和会议号获取参会任务。用户扫描二维码，进入签到，此时查询用户有无参会权限，以及可以进行信息二次填写， -->
+	<select id = "getUserSignatureMeetingMessage" resultType="map">
+		select
+			mt.taskId, mt.meetingId, mt.organizationId, mt.attendanceState,
+			mt.attendeeNumber, mt.contacts, mt.Mobile, mt.email,
+			o.organizationName,o.organizationNo,
+			m.meetingTitle, m.meetingTime, m.meetingAddresses
+		from
+			meetingtask mt
+		INNER JOIN 
+			organization o on o.organizationId = mt.organizationId
+		INNER JOIN
+			meeting m on m.meetingId = mt.meetingId
+		where mt.organizationId = #{organizationId} and mt.meetingId = #{meetingId}
+	</select>
+	<!-- 获取会议参加情况-->
+	<select id = "getMeetingAtendanceState" resultType="map">
+	select m.meetingTitle,m.meetingTime,mt.meetingId,mt.organizationId,o.organizationName,mt.attendanceState,mt.attendeeNumber,mt.contacts,mt.Mobile,mt.email 
+     from meetingtask mt left join organization o on mt.organizationId=o.organizationId
+     left join meeting m on mt.meetingId=m.meetingId
+         where mt.meetingId=#{meetingId}
+         order by mt.attendanceState
+	    
+     </select>
+     <!-- 删除某次回答参会任务-->
+	 <delete id="deletMeetingTaskByMeetingId" parameterType="java.lang.Integer" >
+    delete from meetingtask
+    where meetingId = #{meetingId,jdbcType=INTEGER}
+  </delete>
+  	<!-- 统计会议参加情况-->
+	<select id = "getMeetingAtendanceStatistics" resultType="map">
+	  select o.organizationName,m.attendeeNumber, m.meetingId,m.meetingNo,o.supervisorDepartment, 
+	  o.organizationName,o.organizationNo,o.organizationType,o.schoolLevel,o.belong,
+       count(m.attendanceState) as count1,
+       count(case when m.attendanceState ='已参加' THEN 1 ELSE NULL END) as count2,
+       sum(m.attendeeNumber) as totalNumber,
+       sum(m.remind) as remindNumber
+		from meetingtask m LEFT JOIN organization o on
+		m.organizationId=o.organizationId
+		where 1=1
+        <if test="meetingNo != null">
+            and INSTR(m.meetingNo,#{meetingNo})
+		</if>
+		<if test="organizationName != null">
+	        and INSTR(o.organizationName,#{organizationName})		
+		</if>
+		<if test="organizationType != null">
+			 and INSTR(#{organizationType},o.organizationType)	
+		</if>
+		<if test="belong != null">
+			and INSTR(#{belong},o.belong)
+		</if>
+		<if test="schoolLevel != null">
+		    and INSTR(#{schoolLevel},o.schoolLevel)
+		</if>			
+		group by o.organizationNo
+		order by o.organizationNo
+	   </select>	
+	   	<!-- 返回某次会议所有参会任务 -->
+	<select id="selectAllMeetingTaskByMeetingId" resultType="edu.gd.ccp.entity.MeetingTask">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM meetingtask
+		WHERE meetingId=#{meetingId}
+	</select>
+	
+</mapper>

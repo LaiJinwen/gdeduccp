@@ -1,0 +1,98 @@
+#logintitle h1{
+	font-size: 20px;
+	letter-spacing: 2px;
+	color: #c11e21;
+	margin-top: 115px;
+	margin-left:  23.5px;
+	margin-right: 23.5px;
+}
+
+#loginarea{
+	margin-top: 45px;
+}
+
+.ui-input-text{
+	border-color: rgb(234, 234, 234) !important;
+	width: 20.5em !important;
+	height: 2.9em  !important;
+	margin-left: 1.40625em !important;
+	margin-top: 13px !important;
+	border-radius: 44px !important;
+	box-shadow: none !important;
+}
+.ui-input-text input{
+	min-height: 3.1em !important;
+	font-size: 15px !important;
+	padding-left: 55px !important; 
+	letter-spacing: 2px !important; 
+}
+
+/*.ui-input-text{
+	border-width: 0px; 
+}
+*/
+
+/*.ui-input-search {
+	border-color: rgb(234, 234, 234) !important;
+	width: 18.625em !important;
+	height: 2.9em  !important;
+	margin-left: 1.40625em !important;
+	margin-top: 13px !important;
+	border-radius: 44px !important;
+	box-shadow: none !important;
+}
+.ui-input-search input{
+	min-height: 3.1em !important;
+	font-size: 15px !important;
+	margin-left: 18px !important; 
+}
+
+#username:after{
+	left: 0.9em;
+	background-image: url("../img/pwd.png") !important;
+	background-size: 18px 18px;
+}
+
+.ui-input-text{
+	border-width: 0px; 
+}
+*/
+
+#btnarea{
+	 margin-top: 40px;
+}
+.ui-input-btn {
+	text-shadow:none !important;
+	color: #fff !important;  
+	font-weight: normal !important;
+	font-stretch: normal !important;
+	font-size: 20px !important;
+	border-color: #fff !important;
+	width: 284px !important;
+	margin-left: 1.40625em !important;
+	margin-top: 13px !important;
+	border-radius: 44px !important;
+	box-shadow: none !important;
+	border: solid 1px #c11e21;
+	background-color: #c11e21 !important;
+	min-height: 16px !important;
+}
+
+#footer img{
+	width: 414px;
+	height: 290px;
+}
+
+#username{
+	background-image: url("/gdeduccp/assets/mobile/img/user.png");
+	background-repeat: no-repeat;
+	background-position: 8% 48%;
+	background-size: 18px 20px;
+}
+
+#pwd{
+	background-image: url("/gdeduccp/assets/mobile/img/pwd.png");
+	background-repeat: no-repeat;
+	background-position: 8% 48%;
+	background-size: 18px 20px;
+}

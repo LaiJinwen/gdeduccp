@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.gd.ccp.dao.DocumentTypeMapper" >
+  <resultMap id="BaseResultMap" type="edu.gd.ccp.entity.DocumentType" >
+    <id column="documentTypeId" property="documenttypeid" jdbcType="INTEGER" />
+    <result column="documentType" property="documenttype" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    documentTypeId, documentType
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from documenttype
+    where documentTypeId = #{documenttypeid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from documenttype
+    where documentTypeId = #{documenttypeid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="edu.gd.ccp.entity.DocumentType" >
+    insert into documenttype (documentTypeId, documentType)
+    values (#{documenttypeid,jdbcType=INTEGER}, #{documenttype,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="edu.gd.ccp.entity.DocumentType" >
+    insert into documenttype
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="documenttypeid != null" >
+        documentTypeId,
+      </if>
+      <if test="documenttype != null" >
+        documentType,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="documenttypeid != null" >
+        #{documenttypeid,jdbcType=INTEGER},
+      </if>
+      <if test="documenttype != null" >
+        #{documenttype,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="edu.gd.ccp.entity.DocumentType" >
+    update documenttype
+    <set >
+      <if test="documenttype != null" >
+        documentType = #{documenttype,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where documentTypeId = #{documenttypeid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="edu.gd.ccp.entity.DocumentType" >
+    update documenttype
+    set documentType = #{documenttype,jdbcType=VARCHAR}
+    where documentTypeId = #{documenttypeid,jdbcType=INTEGER}
+  </update>
+  <select id="selectDocumentTypes" resultType="DocumentType" >
+    select 
+    <include refid="Base_Column_List" />
+    from documenttype
+  </select> 
+</mapper>

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.gd.ccp.dao.VotetaskMapper" >
+  <resultMap id="BaseResultMap" type="edu.gd.ccp.entity.Votetask" >
+    <id column="voteTaskId" property="votetaskid" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="introduction" property="introduction" jdbcType="VARCHAR" />
+    <result column="candidateNumber" property="candidatenumber" jdbcType="INTEGER" />
+    <result column="maxChooseNumber" property="maxchoosenumber" jdbcType="INTEGER" />
+    <result column="maxVoterNumber" property="maxvoternumber" jdbcType="INTEGER" />
+    <result column="publishDate" property="publishdate" jdbcType="TIMESTAMP" />
+    <result column="deadLine" property="deadline" jdbcType="TIMESTAMP" />
+    <result column="accessory" property="accessory" jdbcType="VARCHAR" />
+     <result column="remind" property="remind" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    voteTaskId, title, introduction, candidateNumber, maxChooseNumber, maxVoterNumber, 
+    publishDate, deadLine, accessory,remind
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from votetask
+    where voteTaskId = #{votetaskid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from votetask
+    where voteTaskId = #{votetaskid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="edu.gd.ccp.entity.Votetask" >
+        <selectKey resultType="java.lang.Integer" keyProperty="votetaskid"
+			order="AFTER">
+			SELECT LAST_INSERT_ID() AS votetaskid
+		</selectKey>
+		
+    insert into votetask (voteTaskId, title, introduction, 
+      candidateNumber, maxChooseNumber, maxVoterNumber, 
+      publishDate, deadLine, accessory
+      )
+    values (#{votetaskid,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{introduction,jdbcType=VARCHAR}, 
+      #{candidatenumber,jdbcType=INTEGER}, #{maxchoosenumber,jdbcType=INTEGER}, #{maxvoternumber,jdbcType=INTEGER}, 
+      #{publishdate,jdbcType=TIMESTAMP}, #{deadline,jdbcType=TIMESTAMP}, #{accessory,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="edu.gd.ccp.entity.Votetask" >
+    insert into votetask
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="votetaskid != null" >
+        voteTaskId,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="introduction != null" >
+        introduction,
+      </if>
+      <if test="candidatenumber != null" >
+        candidateNumber,
+      </if>
+      <if test="maxchoosenumber != null" >
+        maxChooseNumber,
+      </if>
+      <if test="maxvoternumber != null" >
+        maxVoterNumber,
+      </if>
+      <if test="publishdate != null" >
+        publishDate,
+      </if>
+      <if test="deadline != null" >
+        deadLine,
+      </if>
+      <if test="accessory != null" >
+        accessory,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="votetaskid != null" >
+        #{votetaskid,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="introduction != null" >
+        #{introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="candidatenumber != null" >
+        #{candidatenumber,jdbcType=INTEGER},
+      </if>
+      <if test="maxchoosenumber != null" >
+        #{maxchoosenumber,jdbcType=INTEGER},
+      </if>
+      <if test="maxvoternumber != null" >
+        #{maxvoternumber,jdbcType=INTEGER},
+      </if>
+      <if test="publishdate != null" >
+        #{publishdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deadline != null" >
+        #{deadline,jdbcType=TIMESTAMP},
+      </if>
+      <if test="accessory != null" >
+        #{accessory,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="edu.gd.ccp.entity.Votetask" >
+    update votetask
+    <set >
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="introduction != null" >
+        introduction = #{introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="candidatenumber != null" >
+        candidateNumber = #{candidatenumber,jdbcType=INTEGER},
+      </if>
+      <if test="maxchoosenumber != null" >
+        maxChooseNumber = #{maxchoosenumber,jdbcType=INTEGER},
+      </if>
+      <if test="maxvoternumber != null" >
+        maxVoterNumber = #{maxvoternumber,jdbcType=INTEGER},
+      </if>
+      <if test="publishdate != null" >
+        publishDate = #{publishdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deadline != null" >
+        deadLine = #{deadline,jdbcType=TIMESTAMP},
+      </if>
+      <if test="accessory != null" >
+        accessory = #{accessory,jdbcType=VARCHAR},
+      </if>
+         <if test="remind != null" >
+        remind = #{remind,jdbcType=INTEGER},
+      </if>
+    </set>
+    where voteTaskId = #{votetaskid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="edu.gd.ccp.entity.Votetask" >
+    update votetask
+    set title = #{title,jdbcType=VARCHAR},
+      introduction = #{introduction,jdbcType=VARCHAR},
+      candidateNumber = #{candidatenumber,jdbcType=INTEGER},
+      maxChooseNumber = #{maxchoosenumber,jdbcType=INTEGER},
+      maxVoterNumber = #{maxvoternumber,jdbcType=INTEGER},
+      publishDate = #{publishdate,jdbcType=TIMESTAMP},
+      deadLine = #{deadline,jdbcType=TIMESTAMP},
+      accessory = #{accessory,jdbcType=VARCHAR},
+       remind = #{remind,jdbcType=INTEGER}
+    where voteTaskId = #{votetaskid,jdbcType=INTEGER}
+  </update>
+  
+  <!-- 列出所有投票任务 -->
+
+	<select id="listVoteTask" resultType="map">
+		select
+		vt.voteTaskId,vt.title,vt.introduction,vt.candidateNumber,vt.maxChooseNumber,vt.maxVoterNumber,vt.publishDate,count(vc.name)
+		as count
+		from votetask vt LEFT JOIN votecandidate vc on vt.voteTaskId=vc.voteTaskId
+		group by vt.voteTaskId
+		order by vt.voteTaskId desc
+		<if test="offset!=null and limit!=null">
+			LIMIT #{offset}, #{limit}
+		</if>
+
+	</select>
+	<!-- 投票任务数 -->
+	<select id="voteTaskCount" resultType="Integer">
+		select count(*) as count
+        from votetask  
+	</select>
+	<!-- 学校端获取投票任务 -->
+	<select id="getVoteTaskByOrganizationNo" resultType="Map">
+	select vt.title,vt.introduction,vt.candidateNumber,vt.deadLine,vt.maxChooseNumber,vt.voteTaskId,vt.publishDate,v.organizationNo,v.voterState,v.voteTime
+     from votetask vt left join voters v on vt.voteTaskId=v.voteTaskId
+     where v.organizationNo=#{organizationNo}
+     order by v.voterState desc,vt.publishDate desc
+	</select>	
+	<!-- 学校投票任务数 -->
+	<select id="voteTaskCountByOrganizationNo" resultType="Integer">
+	 select count(*) as count
+		 from votetask vt left join voters v on vt.voteTaskId=v.voteTaskId
+     where v.organizationNo=#{organizationNo}
+	</select>
+
+</mapper>

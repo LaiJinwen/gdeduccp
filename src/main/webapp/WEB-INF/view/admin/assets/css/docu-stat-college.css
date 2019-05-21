@@ -1,0 +1,68 @@
+#page-inner .panel-body {
+	padding: 0 15px;
+}
+
+#page-inner .panel-body .row>div {
+	background-color: palegoldenrod;
+	height: 800px;
+	padding: 0;
+}
+
+#page-inner .panel-body .row>.left {
+	background-color: #eee;
+}
+
+#page-inner .panel-body .row>.right {
+	background-color: #fff;
+}
+
+#page-inner .panel-body .row>.left .search-box {
+	padding: 25px 15px;
+}
+
+#page-inner .panel-body .row>.left h2 {
+	font-size: 14px;
+	padding-left: 20px;
+	color: #7D7D7D;
+}
+
+#page-inner .panel-body .row>.left hr {
+	border-top: 1px solid #DCDCDC;
+}
+
+.college-box ul {
+	padding: 0;
+}
+
+.college-box li {
+	list-style: none;
+}
+
+.college-box li a {
+	display: block;
+	padding: 8px 0 8px 22px;
+	color: inherit;
+	text-decoration: none;
+}
+
+.college-box li a:hover,
+.college-box li.on {
+	background: #D2D2D2;
+}
+
+.college-box .panel {
+	background: inherit;
+}
+
+.college-box .panel-default>.panel-heading {
+	background: inherit;
+}
+
+#page-inner .college-box .panel-body {
+	padding: 0;
+}
+
+.college-box #accordion {
+	height: 630px;
+	overflow-y: scroll;
+}

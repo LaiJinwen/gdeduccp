@@ -1,0 +1,102 @@
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance  http://www.springmodules.org/schema/cache/springmodules-cache.xsd http://www.springmodules.org/schema/cache/springmodules-ehcache.xsd"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
+    http://java.sun.com/xml/ns/j2ee 
+    http://java.sun.com/xml/ns/j2ee/web-app_3_0.xsd">
+
+	<display-name>guangdong education ccp Web Application</display-name>
+
+	<!-- Spring MVC 核心控制器 DispatcherServlet 配置 -->
+	<servlet>
+		<servlet-name>dispatcher</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet
+		</servlet-class>
+		<!-- 配置springMVC需要加载的配置文件 spring-dao.xml,spring-service.xml,spring-web.xml 
+			Mybatis - > spring -> springmvc -->
+
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:spring-*.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>dispatcher</servlet-name>
+		<!-- 拦截所有/ 的请求,交给DispatcherServlet处理,性能最好 -->
+		<url-pattern>/</url-pattern>
+
+	</servlet-mapping>
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter
+		</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+<!-- PageOffice Begin -->
+	<servlet>
+		<servlet-name>poserver</servlet-name>
+		<servlet-class>com.zhuozhengsoft.pageoffice.poserver.Server</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>poserver</servlet-name>
+		<url-pattern>/poserver.zz</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>poserver</servlet-name>
+		<url-pattern>/sealsetup.exe</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>poserver</servlet-name>
+		<url-pattern>/posetup.exe</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>poserver</servlet-name>
+		<url-pattern>/pageoffice.js</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>poserver</servlet-name>
+		<url-pattern>/jquery.min.js</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>poserver</servlet-name>
+		<url-pattern>/pobstyle.css</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>adminseal</servlet-name>
+		<servlet-class>com.zhuozhengsoft.pageoffice.poserver.AdminSeal</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>adminseal</servlet-name>
+		<url-pattern>/adminseal.zz</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>adminseal</servlet-name>
+		<url-pattern>/loginseal.zz</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>adminseal</servlet-name>
+		<url-pattern>/sealimage.zz</url-pattern>
+	</servlet-mapping>
+	<mime-mapping>
+		<extension>mht</extension>
+		<mime-type>message/rfc822</mime-type>
+	</mime-mapping>
+	<context-param>
+		<param-name>adminseal-password</param-name>
+		<param-value>111111</param-value>
+	</context-param>
+	<!-- PageOffice End -->
+	
+</web-app>

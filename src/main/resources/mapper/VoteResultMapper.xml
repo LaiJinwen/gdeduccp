@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.gd.ccp.dao.VoteResultMapper" >
+  <resultMap id="BaseResultMap" type="edu.gd.ccp.entity.VoteResult" >
+    <id column="resultId" property="resultid" jdbcType="INTEGER" />
+    <result column="voteTaskId" property="votetaskid" jdbcType="INTEGER" />
+    <result column="voterId" property="voterid" jdbcType="INTEGER" />
+    <result column="voteResult" property="voteresult" jdbcType="VARCHAR" />
+    <result column="voteTime" property="votetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    resultId, voteTaskId, voterId, voteResult, voteTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from voteresult
+    where resultId = #{resultid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from voteresult
+    where resultId = #{resultid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="edu.gd.ccp.entity.VoteResult" >
+    insert into voteresult (resultId, voteTaskId, voterId, 
+      voteResult, voteTime)
+    values (#{resultid,jdbcType=INTEGER}, #{votetaskid,jdbcType=INTEGER}, #{voterid,jdbcType=INTEGER}, 
+      #{voteresult,jdbcType=VARCHAR}, #{votetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="edu.gd.ccp.entity.VoteResult" >
+    insert into voteresult
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="resultid != null" >
+        resultId,
+      </if>
+      <if test="votetaskid != null" >
+        voteTaskId,
+      </if>
+      <if test="voterid != null" >
+        voterId,
+      </if>
+      <if test="voteresult != null" >
+        voteResult,
+      </if>
+      <if test="votetime != null" >
+        voteTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="resultid != null" >
+        #{resultid,jdbcType=INTEGER},
+      </if>
+      <if test="votetaskid != null" >
+        #{votetaskid,jdbcType=INTEGER},
+      </if>
+      <if test="voterid != null" >
+        #{voterid,jdbcType=INTEGER},
+      </if>
+      <if test="voteresult != null" >
+        #{voteresult,jdbcType=VARCHAR},
+      </if>
+      <if test="votetime != null" >
+        #{votetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="edu.gd.ccp.entity.VoteResult" >
+    update voteresult
+    <set >
+      <if test="votetaskid != null" >
+        voteTaskId = #{votetaskid,jdbcType=INTEGER},
+      </if>
+      <if test="voterid != null" >
+        voterId = #{voterid,jdbcType=INTEGER},
+      </if>
+      <if test="voteresult != null" >
+        voteResult = #{voteresult,jdbcType=VARCHAR},
+      </if>
+      <if test="votetime != null" >
+        voteTime = #{votetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where resultId = #{resultid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="edu.gd.ccp.entity.VoteResult" >
+    update voteresult
+    set voteTaskId = #{votetaskid,jdbcType=INTEGER},
+      voterId = #{voterid,jdbcType=INTEGER},
+      voteResult = #{voteresult,jdbcType=VARCHAR},
+      voteTime = #{votetime,jdbcType=TIMESTAMP}
+    where resultId = #{resultid,jdbcType=INTEGER}
+  </update>
+  <!-- 根据任务id获取选票结果 -->
+    <select id="selectResultByVoteTaskid" resultType="map" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from voteresult
+    where voteTaskId = #{voteTaskId,jdbcType=INTEGER}
+  </select>
+  
+    <!-- 2018.12.07 -->
+  <!-- 提交投票结果  -->
+  <update id="updateWhenSubmitResult">
+  	update
+  		voteResult
+  	set
+  		voteResult = #{voteResult},
+  		voteTime = DATE_FORMAT(NOW(),'%Y-%m-%d %H:%m:%s')
+  	where
+  		resultId = #{resultId}
+  </update>
+</mapper>

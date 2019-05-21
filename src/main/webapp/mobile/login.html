@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,target-densitydpi=device-dpi">
+	<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<link rel="stylesheet" href="css/css2.css">
+	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<script type="text/javascript">
+		$(window).bind('resize load', function(){
+		$("body").css("zoom", $(window).width() / 414);
+		$("body").css("display" , "block");
+		}); 
+	</script>
+	<div data-role="page" id="login">
+		<div class="ui-content" data-role="main">
+			<div id="logintitle">
+				<h1>
+				广东省高校党建工作信息管理系统				
+				</h1>
+			</div>
+			<div id="loginarea">
+			<form>
+			      <div id="inputarea">
+			        <input id="username" placeholder="请输入账号">
+			        
+			        <input id="pwd" placeholder="请输入密码">
+			      </div>
+			      <div id="btnarea">
+			      <input type="button" id="submit" data-inline="true" value="登录" >
+				  </div>
+			</form>
+			</div>
+		</div>
+		<div id="footer" data-position="fixed">
+			<img src="img/paint.png">
+		</div>
+	</div>
+
+</head>
+</html>

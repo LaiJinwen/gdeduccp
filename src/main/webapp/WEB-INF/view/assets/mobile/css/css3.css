@@ -1,0 +1,127 @@
+#titlediv h1{
+	font-size: 20px;
+	letter-spacing: 2px;
+	color: #c11e21;
+	margin-top: 20px;
+	margin-left:  10px;
+}
+
+#titlediv h2{
+	font-size: 17px !important;
+	margin-top: 20px;
+	font-size: 20px;
+	letter-spacing: 2px;
+	margin-left:  10px;
+	font-stretch: normal !important;
+}
+
+.li-subtitle{
+	float: left;
+}
+
+.li-maininfo{
+	margin-left: 30px;
+	float: left;
+}
+
+
+.ui-listview>li p {
+	font-size: 14px !important;
+}
+
+
+#subdiv{
+	overflow: hidden;
+}
+
+.input-subtitle{
+	height: 100%;
+	float: left;
+	margin-left: 10px
+}
+
+.input-subtitle p{
+	font-size: 16px !important;
+	margin-top: 25px;
+}
+
+.input-maininfo{
+	float: left;
+}
+
+
+.ui-input-text{
+	border-color: rgb(234, 234, 234) !important;
+	width: 16.5em ;
+	height: 2.9em ;
+	margin-left: 1.40625em !important;
+	margin-top: 13px !important;
+	border-radius: 15px !important;
+	box-shadow: none !important;
+}
+
+.ui-input-text input{
+	min-height: 3.1em !important;
+	font-size: 15px !important;
+	margin-left: 18px !important; 
+}
+
+textarea.ui-input-text{
+	width: 16.5em ;
+	padding-left: 1.40625em !important;
+	padding-top: 13px !important;
+}
+
+#inputarea p{
+	font-size:15px; 
+}
+
+
+#btnarea{
+	 margin-top: 25px;
+}
+.ui-input-btn {
+	text-shadow:none !important;
+	color: #fff !important;  
+	font-weight: normal !important;
+	font-stretch: normal !important;
+	font-size: 20px !important;
+	border-color: #fff !important;
+	width: 330px !important;
+	margin-left: 0.3em !important;
+	margin-top: 13px !important;
+	border-radius: 44px !important;
+	box-shadow: none !important;
+	border: solid 1px #c11e21;
+	background-color: #c11e21 !important;
+	min-height: 16px !important;
+}
+
+#outcometitlediv h1{
+	font-size: 20px;
+	letter-spacing: 2px;
+	color: #c11e21;
+	margin-top: 80px;
+	margin-left:  23.5px;
+	margin-right: 23.5px;
+}
+
+#outcomediv{
+	margin-top: 100px;
+	margin-left: 120px;
+}
+
+#outcomediv p{
+	font-size: 30px;
+	letter-spacing: 2px;
+	color: #c11e21;
+}
+
+#footer{
+	margin-top: 135px;
+}
+
+#footer img{
+	width: 414px;
+	height: 290px;
+}

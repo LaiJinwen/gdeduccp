@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.gd.ccp.dao.DocumentTaskMapper" >
+  <resultMap id="BaseResultMap" type="edu.gd.ccp.entity.DocumentTask" >
+    <id column="documentTaskId" property="documenttaskid" jdbcType="INTEGER" />
+    <result column="documentTypeId" property="documenttypeid" jdbcType="INTEGER" />
+    <result column="publishUserId" property="publishuserid" jdbcType="VARCHAR" />
+    <result column="deadLine" property="deadline" jdbcType="TIMESTAMP" />
+    <result column="publishDate" property="publishdate" jdbcType="TIMESTAMP" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="documentNo" property="documentno" jdbcType="VARCHAR" />
+    <result column="accessory" property="accessory" jdbcType="VARCHAR" />
+    <result column="documents" property="documents" jdbcType="VARCHAR" />
+    <result column="remind" property="remind" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    documentTaskId, documentTypeId, publishUserId, deadLine, publishDate, title, documentNo, 
+    accessory, documents, remind
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from documenttask
+    where documentTaskId = #{documenttaskid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from documenttask
+    where documentTaskId = #{documenttaskid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="edu.gd.ccp.entity.DocumentTask" >
+    insert into documenttask (documentTaskId, documentTypeId, publishUserId, 
+      deadLine, publishDate, title, 
+      documentNo, accessory, documents, 
+      remind)
+    values (#{documenttaskid,jdbcType=INTEGER}, #{documenttypeid,jdbcType=INTEGER}, #{publishuserid,jdbcType=VARCHAR}, 
+      #{deadline,jdbcType=TIMESTAMP}, #{publishdate,jdbcType=TIMESTAMP}, #{title,jdbcType=VARCHAR}, 
+      #{documentno,jdbcType=VARCHAR}, #{accessory,jdbcType=VARCHAR}, #{documents,jdbcType=VARCHAR}, 
+      #{remind,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="edu.gd.ccp.entity.DocumentTask" >
+    insert into documenttask
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="documenttaskid != null" >
+        documentTaskId,
+      </if>
+      <if test="documenttypeid != null" >
+        documentTypeId,
+      </if>
+      <if test="publishuserid != null" >
+        publishUserId,
+      </if>
+      <if test="deadline != null" >
+        deadLine,
+      </if>
+      <if test="publishdate != null" >
+        publishDate,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="documentno != null" >
+        documentNo,
+      </if>
+      <if test="accessory != null" >
+        accessory,
+      </if>
+      <if test="documents != null" >
+        documents,
+      </if>
+      <if test="remind != null" >
+        remind,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="documenttaskid != null" >
+        #{documenttaskid,jdbcType=INTEGER},
+      </if>
+      <if test="documenttypeid != null" >
+        #{documenttypeid,jdbcType=INTEGER},
+      </if>
+      <if test="publishuserid != null" >
+        #{publishuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="deadline != null" >
+        #{deadline,jdbcType=TIMESTAMP},
+      </if>
+      <if test="publishdate != null" >
+        #{publishdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="documentno != null" >
+        #{documentno,jdbcType=VARCHAR},
+      </if>
+      <if test="accessory != null" >
+        #{accessory,jdbcType=VARCHAR},
+      </if>
+      <if test="documents != null" >
+        #{documents,jdbcType=VARCHAR},
+      </if>
+      <if test="remind != null" >
+        #{remind,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="edu.gd.ccp.entity.DocumentTask" >
+    update documenttask
+    <set >
+      <if test="documenttypeid != null" >
+        documentTypeId = #{documenttypeid,jdbcType=INTEGER},
+      </if>
+      <if test="publishuserid != null" >
+        publishUserId = #{publishuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="deadline != null" >
+        deadLine = #{deadline,jdbcType=TIMESTAMP},
+      </if>
+      <if test="publishdate != null" >
+        publishDate = #{publishdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="documentno != null" >
+        documentNo = #{documentno,jdbcType=VARCHAR},
+      </if>
+      <if test="accessory != null" >
+        accessory = #{accessory,jdbcType=VARCHAR},
+      </if>
+      <if test="documents != null" >
+        documents = #{documents,jdbcType=VARCHAR},
+      </if>
+      <if test="remind != null" >
+        remind = #{remind,jdbcType=INTEGER},
+      </if>
+    </set>
+    where documentTaskId = #{documenttaskid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="edu.gd.ccp.entity.DocumentTask" >
+    update documenttask
+    set documentTypeId = #{documenttypeid,jdbcType=INTEGER},
+      publishUserId = #{publishuserid,jdbcType=VARCHAR},
+      deadLine = #{deadline,jdbcType=TIMESTAMP},
+      publishDate = #{publishdate,jdbcType=TIMESTAMP},
+      title = #{title,jdbcType=VARCHAR},
+      documentNo = #{documentno,jdbcType=VARCHAR},
+      accessory = #{accessory,jdbcType=VARCHAR},
+      documents = #{documents,jdbcType=VARCHAR},
+      remind = #{remind,jdbcType=INTEGER}
+    where documentTaskId = #{documenttaskid,jdbcType=INTEGER}
+  </update>
+  
+     <select id="selectByDocumentNo" resultType="edu.gd.ccp.entity.DocumentTask" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    
+    from documenttask
+    where documentNo = #{documentno,jdbcType=VARCHAR}
+  </select>
+  
+  
+    <select id="selectDocumentTask" resultType="DocumentTask" >
+    select 
+    <include refid="Base_Column_List" />
+    from documenttask
+  </select> 
+  <!-- 按条件获取文档任务 -->
+	<select id="getDocumentTaskByCondation" resultType="map">
+       select  dtk.documentTaskId,dtk.documentNo,dtk.title,dtk.publishDate ,dtk.remind ,
+        count(case when d.documentState !='未提交' THEN 1 ELSE NULL END) as count1,count(1) as count2 
+        from documenttask dtk LEFT JOIN document d on dtk.documentTaskId=d.documentTaskId 
+		where 1=1
+        <if test="documentNo != null">
+			and INSTR(dtk.documentNo,#{documentNo})
+		</if>
+		<if test="title != null">
+		    and INSTR(dtk.title,#{title})
+		</if>
+		group by dtk.documentNo
+		order by dtk.publishDate desc
+		<if test="offset!=null and limit!=null">
+			LIMIT #{offset}, #{limit}
+		</if>
+	    
+		
+	</select>
+	  <!-- 按条件获取文档任务总记录个数 -->
+	<select id="getDocumentTaskCountByCondation" resultType="java.lang.Integer">
+       select  count(1) as totalnumber 
+        from documenttask dtk LEFT JOIN documenttype dtp on dtk.documentTypeId=dtp.documentTypeId
+		where 1=1
+        <if test="documentNo != null">
+			and dtk.documentNo= #{documentNo}
+		</if>
+		<if test="title != null">
+			and dtk.title= #{title}
+		</if>
+		<if test="documentType != null">
+			and dtp.documentType= #{documentType}
+		</if>
+	
+	</select>
+	
+</mapper>

@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.gd.ccp.dao.MeetingAttendeesMapper" >
+  <resultMap id="BaseResultMap" type="edu.gd.ccp.entity.MeetingAttendees" >
+    <id column="attendeeId" property="attendeeid" jdbcType="INTEGER" />
+    <result column="taskId" property="taskid" jdbcType="INTEGER" />
+    <result column="organizationNo" property="organizationno" jdbcType="VARCHAR" />
+    <result column="attendeeName" property="attendeename" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="telephone" property="telephone" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="duty" property="duty" jdbcType="VARCHAR" />
+    <result column="department" property="department" jdbcType="VARCHAR" />
+    <result column="jobTitle" property="jobtitle" jdbcType="VARCHAR" />
+    <result column="invoiceContent" property="invoicecontent" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="postCode" property="postcode" jdbcType="VARCHAR" />
+    <result column="stay" property="stay" jdbcType="VARCHAR" />
+    <result column="staystart" property="staystart" jdbcType="DATE" />
+    <result column="stayend" property="stayend" jdbcType="DATE" />
+    <result column="note" property="note" jdbcType="VARCHAR" />
+    <result column="regTime" property="regtime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    attendeeId, taskId, organizationNo, attendeeName, email, telephone, sex, duty, department, 
+    jobTitle, invoiceContent, address, postCode, stay, staystart, stayend, note, regTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from meetingattendees
+    where attendeeId = #{attendeeid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from meetingattendees
+    where attendeeId = #{attendeeid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="edu.gd.ccp.entity.MeetingAttendees" >
+    insert into meetingattendees (attendeeId, taskId, organizationNo, 
+      attendeeName, email, telephone, 
+      sex, duty, department, 
+      jobTitle, invoiceContent, address, 
+      postCode, stay, staystart, 
+      stayend, note, regTime
+      )
+    values (#{attendeeid,jdbcType=INTEGER}, #{taskid,jdbcType=INTEGER}, #{organizationno,jdbcType=VARCHAR}, 
+      #{attendeename,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=VARCHAR}, #{duty,jdbcType=VARCHAR}, #{department,jdbcType=VARCHAR}, 
+      #{jobtitle,jdbcType=VARCHAR}, #{invoicecontent,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{postcode,jdbcType=VARCHAR}, #{stay,jdbcType=VARCHAR}, #{staystart,jdbcType=DATE}, 
+      #{stayend,jdbcType=DATE}, #{note,jdbcType=VARCHAR}, #{regtime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="edu.gd.ccp.entity.MeetingAttendees" >
+    insert into meetingattendees
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="attendeeid != null" >
+        attendeeId,
+      </if>
+      <if test="taskid != null" >
+        taskId,
+      </if>
+      <if test="organizationno != null" >
+        organizationNo,
+      </if>
+      <if test="attendeename != null" >
+        attendeeName,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="telephone != null" >
+        telephone,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="duty != null" >
+        duty,
+      </if>
+      <if test="department != null" >
+        department,
+      </if>
+      <if test="jobtitle != null" >
+        jobTitle,
+      </if>
+      <if test="invoicecontent != null" >
+        invoiceContent,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="postcode != null" >
+        postCode,
+      </if>
+      <if test="stay != null" >
+        stay,
+      </if>
+      <if test="staystart != null" >
+        staystart,
+      </if>
+      <if test="stayend != null" >
+        stayend,
+      </if>
+      <if test="note != null" >
+        note,
+      </if>
+      <if test="regtime != null" >
+        regTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="attendeeid != null" >
+        #{attendeeid,jdbcType=INTEGER},
+      </if>
+      <if test="taskid != null" >
+        #{taskid,jdbcType=INTEGER},
+      </if>
+      <if test="organizationno != null" >
+        #{organizationno,jdbcType=VARCHAR},
+      </if>
+      <if test="attendeename != null" >
+        #{attendeename,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="duty != null" >
+        #{duty,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null" >
+        #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="jobtitle != null" >
+        #{jobtitle,jdbcType=VARCHAR},
+      </if>
+      <if test="invoicecontent != null" >
+        #{invoicecontent,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="postcode != null" >
+        #{postcode,jdbcType=VARCHAR},
+      </if>
+      <if test="stay != null" >
+        #{stay,jdbcType=VARCHAR},
+      </if>
+      <if test="staystart != null" >
+        #{staystart,jdbcType=DATE},
+      </if>
+      <if test="stayend != null" >
+        #{stayend,jdbcType=DATE},
+      </if>
+      <if test="note != null" >
+        #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="regtime != null" >
+        #{regtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="edu.gd.ccp.entity.MeetingAttendees" >
+    update meetingattendees
+    <set >
+      <if test="taskid != null" >
+        taskId = #{taskid,jdbcType=INTEGER},
+      </if>
+      <if test="organizationno != null" >
+        organizationNo = #{organizationno,jdbcType=VARCHAR},
+      </if>
+      <if test="attendeename != null" >
+        attendeeName = #{attendeename,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="duty != null" >
+        duty = #{duty,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null" >
+        department = #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="jobtitle != null" >
+        jobTitle = #{jobtitle,jdbcType=VARCHAR},
+      </if>
+      <if test="invoicecontent != null" >
+        invoiceContent = #{invoicecontent,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="postcode != null" >
+        postCode = #{postcode,jdbcType=VARCHAR},
+      </if>
+      <if test="stay != null" >
+        stay = #{stay,jdbcType=VARCHAR},
+      </if>
+      <if test="staystart != null" >
+        staystart = #{staystart,jdbcType=DATE},
+      </if>
+      <if test="stayend != null" >
+        stayend = #{stayend,jdbcType=DATE},
+      </if>
+      <if test="note != null" >
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="regtime != null" >
+        regTime = #{regtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where attendeeId = #{attendeeid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="edu.gd.ccp.entity.MeetingAttendees" >
+    update meetingattendees
+    set taskId = #{taskid,jdbcType=INTEGER},
+      organizationNo = #{organizationno,jdbcType=VARCHAR},
+      attendeeName = #{attendeename,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      duty = #{duty,jdbcType=VARCHAR},
+      department = #{department,jdbcType=VARCHAR},
+      jobTitle = #{jobtitle,jdbcType=VARCHAR},
+      invoiceContent = #{invoicecontent,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      postCode = #{postcode,jdbcType=VARCHAR},
+      stay = #{stay,jdbcType=VARCHAR},
+      staystart = #{staystart,jdbcType=DATE},
+      stayend = #{stayend,jdbcType=DATE},
+      note = #{note,jdbcType=VARCHAR},
+      regTime = #{regtime,jdbcType=TIMESTAMP}
+    where attendeeId = #{attendeeid,jdbcType=INTEGER}
+  </update>
+  
+  	<!-- 获取某次会议的报名情况 -->
+	<select id="getMeetAttendeesByMeetingId" resultType="map">
+         select ma.attendeeName,ma.email,ma.telephone,ma.address,ma.duty,ma.jobTitle,ma.invoiceContent,ma.stay,ma.sex,o.organizationName,o.invoiceName,o.taxpayerId
+          from meetingtask mt LEFT join meetingattendees ma on mt.taskId=ma.taskId
+          inner join organization o on mt.organizationId=o.organizationId
+ 		 where  mt.meetingId= #{meetingId}
+		order by o.organizationId
+	</select>	
+	
+	 	<!-- 获取某个会议任务的报名情况 -->
+	<select id="getMeetAttendeesByTaskId" resultType="edu.gd.ccp.entity.MeetingAttendees">
+         select 
+          <include refid="Base_Column_List" />
+          from  meetingattendees  
+ 		 where  taskId= #{taskId}
+		order by attendeeId
+	</select>	
+</mapper>

@@ -1,0 +1,15 @@
+th,td {
+	text-align: center;
+}
+td:nth-child(7) {
+	color: #337ab7;
+}
+form .btn {
+	display: block;
+	width: 100px;
+	margin: 20px auto;
+}
+.page-nav {
+	width: 235px;
+	margin: 0 auto;
+}

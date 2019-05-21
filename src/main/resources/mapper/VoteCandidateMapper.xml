@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.gd.ccp.dao.VoteCandidateMapper" >
+  <resultMap id="BaseResultMap" type="edu.gd.ccp.entity.VoteCandidate" >
+    <id column="candidateId" property="candidateid" jdbcType="INTEGER" />
+    <result column="voteTaskId" property="votetaskid" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="introduction" property="introduction" jdbcType="VARCHAR" />
+    <result column="nationality" property="nationality" jdbcType="VARCHAR" />
+    <result column="gender" property="gender" jdbcType="VARCHAR" />
+    <result column="duty" property="duty" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="photo" property="photo" jdbcType="VARCHAR" />
+    <result column="birthDay" property="birthday" jdbcType="VARCHAR" />
+    <result column="politicsStatus" property="politicsstatus" jdbcType="VARCHAR" />
+    <result column="votes" property="votes" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    candidateId, voteTaskId, name, introduction, nationality, gender, duty, title, photo, 
+    birthDay, politicsStatus, votes
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from votecandidate
+    where candidateId = #{candidateid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from votecandidate
+    where candidateId = #{candidateid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="edu.gd.ccp.entity.VoteCandidate" >
+    insert into votecandidate (candidateId, voteTaskId, name, 
+      introduction, nationality, gender, 
+      duty, title, photo, 
+      birthDay, politicsStatus, votes
+      )
+    values (#{candidateid,jdbcType=INTEGER}, #{votetaskid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{introduction,jdbcType=VARCHAR}, #{nationality,jdbcType=VARCHAR}, #{gender,jdbcType=VARCHAR}, 
+      #{duty,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{photo,jdbcType=VARCHAR}, 
+      #{birthday,jdbcType=VARCHAR}, #{politicsstatus,jdbcType=VARCHAR}, #{votes,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="edu.gd.ccp.entity.VoteCandidate" >
+    insert into votecandidate
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="candidateid != null" >
+        candidateId,
+      </if>
+      <if test="votetaskid != null" >
+        voteTaskId,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="introduction != null" >
+        introduction,
+      </if>
+      <if test="nationality != null" >
+        nationality,
+      </if>
+      <if test="gender != null" >
+        gender,
+      </if>
+      <if test="duty != null" >
+        duty,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="photo != null" >
+        photo,
+      </if>
+      <if test="birthday != null" >
+        birthDay,
+      </if>
+      <if test="politicsstatus != null" >
+        politicsStatus,
+      </if>
+      <if test="votes != null" >
+        votes,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="candidateid != null" >
+        #{candidateid,jdbcType=INTEGER},
+      </if>
+      <if test="votetaskid != null" >
+        #{votetaskid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="introduction != null" >
+        #{introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="nationality != null" >
+        #{nationality,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="duty != null" >
+        #{duty,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null" >
+        #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="politicsstatus != null" >
+        #{politicsstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="votes != null" >
+        #{votes,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="edu.gd.ccp.entity.VoteCandidate" >
+    update votecandidate
+    <set >
+      <if test="votetaskid != null" >
+        voteTaskId = #{votetaskid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="introduction != null" >
+        introduction = #{introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="nationality != null" >
+        nationality = #{nationality,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        gender = #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="duty != null" >
+        duty = #{duty,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null" >
+        photo = #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        birthDay = #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="politicsstatus != null" >
+        politicsStatus = #{politicsstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="votes != null" >
+        votes = #{votes,jdbcType=INTEGER},
+      </if>
+    </set>
+    where candidateId = #{candidateid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="edu.gd.ccp.entity.VoteCandidate" >
+    update votecandidate
+    set voteTaskId = #{votetaskid,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      introduction = #{introduction,jdbcType=VARCHAR},
+      nationality = #{nationality,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=VARCHAR},
+      duty = #{duty,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      photo = #{photo,jdbcType=VARCHAR},
+      birthDay = #{birthday,jdbcType=VARCHAR},
+      politicsStatus = #{politicsstatus,jdbcType=VARCHAR},
+      votes = #{votes,jdbcType=INTEGER}
+    where candidateId = #{candidateid,jdbcType=INTEGER}
+  </update>
+  
+   <!-- 根据投票任务id获取候选人 -->
+    <select id="selectByTaskid" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from votecandidate
+    where voteTaskId = #{voteTaskid,jdbcType=INTEGER}
+  </select>
+  
+     
+  <!-- 2018.12.07 -->
+  <!-- 由voteTaskId获取所有候选人信息 -->
+  <select id = "selectByVoteTaskId" resultType = "edu.gd.ccp.entity.VoteCandidate">
+  	select
+  		candidateId, voteTaskId, name, introduction, nationality, 
+ 		gender, duty, title, photo, birthDay, politicsStatus, votes
+ 	from
+ 		votecandidate
+ 	where voteTaskId = #{voteTaskId}
+  </select>
+</mapper>
